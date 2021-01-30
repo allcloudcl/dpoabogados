@@ -14,5 +14,5 @@ admin_role = Role.create!({name: 'admin'})
 
 # USERS
 # -----
-user = User.create!({email: "user@mail.com", role: normal_role, password: "123456", password_confirmation: "123456"})
-admin = User.create!({email: "admin@mail.com", role: admin_role, password: "123456", password_confirmation: "123456"})
+user = User.create!({email: "user@mail.com", username: 'normal', role: normal_role, password: "123456", password_confirmation: "123456"})
+admin = User.create!({email: "admin@mail.com", username: 'admin', role: admin_role, password: "123456", password_confirmation: "123456"})
