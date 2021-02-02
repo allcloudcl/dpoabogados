@@ -29,11 +29,13 @@ class Contracts extends React.Component {
                 <td>{contract.id}</td>
                 <td>{contract.description}</td>
                 <td>{contract.user.name}</td>
+                <td>{contract.kind}</td>
             </tr>
         ));
 
         const noContract = (
             <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -57,6 +59,7 @@ class Contracts extends React.Component {
                         <th>ID</th>
                         <th>Description</th>
                         <th>User</th>
+                        <th>Kind</th>
                       </tr>
                     </thead>
                   <tbody>
