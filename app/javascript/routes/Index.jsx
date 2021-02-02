@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar";
 
 import Home from "../components/Home";
 import Contracts from "../components/Contracts";
+import Users from "../components/Users";
 
 export default (
   <Router>
@@ -15,6 +16,7 @@ export default (
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/contracts" exact component={Contracts} />
+        <Route path="/users" exact component={Users} />
       </Switch>
     </main>
   </Router>
