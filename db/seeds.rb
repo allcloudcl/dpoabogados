@@ -16,3 +16,21 @@ admin_role = Role.create!({name: 'admin'})
 # -----
 user = User.create!({first_name: "Regular", last_name: "User", email: "user@mail.com", username: 'normal', role: normal_role, password: "123456", password_confirmation: "123456"})
 admin = User.create!({first_name: "Admin", last_name: "ChileDeuda", email: "admin@mail.com", username: 'admin', role: admin_role, password: "123456", password_confirmation: "123456"})
+
+
+# CONTRACTS
+# ---------
+Contract.create!([
+  {description: "Contrato Deuda para Usuario. Lorem ipsum etc etc",
+   kind: 0,
+   user_id: user.id},
+  {description: "Contrato Deuda para Admin. Lorem ipsum etc etc",
+   kind: 0,
+   user_id: admin.id},
+  {description: "Contrato Jurídico para Usuario. Lorem ipsum etc etc",
+   kind: 1,
+   user_id: user.id},
+  {description: "Contrato Jurídico para Admin. Lorem ipsum etc etc",
+   kind: 1,
+   user_id: admin.id}
+])

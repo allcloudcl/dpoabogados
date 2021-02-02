@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   ## Relationships
   belongs_to :role
+  has_many :contracts
 
   def admin?
     /admin/i.match?(role.name)

@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2021_02_02_062414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "contracts", force: :cascade do |t|
+    t.text "description"
+    t.integer "kind"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_contracts_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -40,5 +49,6 @@ ActiveRecord::Schema.define(version: 2021_02_02_062414) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "contracts", "users"
   add_foreign_key "users", "roles"
 end
