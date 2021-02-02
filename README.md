@@ -77,3 +77,21 @@ rails db:setup
 * Deployment instructions
 
 * ...
+
+# Protips
+
+```
+rails g scaffold_controller api/v1/Post --api --model-name=Post
+```
+
+In `app/views/api/v1/posts/{index,show}.json.jbuilder`:
+```diff
+-json.array! @posts, partial: "posts/post", as: :post
++json.array! @posts, partial: "api/v1/posts/post", as: :post
+```
+
+In `app/views/api/v1/posts/_post.json.jbuilder`:
+```diff
+-json.url post_url(post, format: :json)
++json.url api_v1_post_url(post, format: :json)
+```

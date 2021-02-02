@@ -18,9 +18,12 @@ class User < ApplicationRecord
   end
 
   attr_writer :login
-
   def login
     @login || self.username || self.email
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def self.find_for_database_authentication(warden_conditions)
