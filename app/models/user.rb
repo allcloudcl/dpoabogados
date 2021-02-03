@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: {case_sensitive: false}
   # only allow letter, number, underscore and punctuation.
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  # Validate DNI. Follows the pattern XX.XXX.XXX-Y
+  validates :dni, format: {with: /\A\d{2}\.\d{3}\.\d{3}-(\d|k)\z/i, message: "Wrong DNI format. It must look like XX.XXX.XXX-Y"}
 
   ## Relationships
   belongs_to :role

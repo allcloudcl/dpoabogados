@@ -27,6 +27,7 @@ class Users extends React.Component {
         const allUsers = users.map((user, index) => (
             <tr key={index}>
                 <td>{user.id}</td>
+                    <td><code>{user.dni}</code></td>
                 <td>{user.full_name}</td>
                 <td>{user.phone}</td>
                 <td><code>{user.username}</code></td>
@@ -37,6 +38,7 @@ class Users extends React.Component {
 
         const noUser = (
             <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -61,6 +63,7 @@ class Users extends React.Component {
                     <thead>
                       <tr>
                         <th>ID</th>
+                        <th>DNI</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Username</th>
