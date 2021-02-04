@@ -79,6 +79,8 @@ rails db:setup
 * ...
 
 # Protips
+I'm using `Post` as an example of the Model and Controller, substitute it for
+your own model.
 
 ```
 rails g scaffold_controller api/v1/Post --api --model-name=Post
@@ -94,4 +96,13 @@ In `app/views/api/v1/posts/_post.json.jbuilder`:
 ```diff
 -json.url post_url(post, format: :json)
 +json.url api_v1_post_url(post, format: :json)
+```
+
+In `app/controllers/api/v1/posts_controller.rb`:
+```diff
+-      render :show, status: :ok, location: @post
++      render :show, status: :ok, location: api_v1_post_url(@post, format: :json)
+...
+-      render :show, status: :created, location: @post
++      render :show, status: :created, location: api_v1_post_url(@post, format: :json)
 ```

@@ -18,7 +18,7 @@ class Api::V1::ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
 
     if @contract.save
-      render :show, status: :created, location: @contract
+      render :show, status: :created, location: api_v1_contract_url(@contract, format: :json)
     else
       render json: @contract.errors, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Api::V1::ContractsController < ApplicationController
   # PATCH/PUT /contracts/1.json
   def update
     if @contract.update(contract_params)
-      render :show, status: :ok, location: @contract
+      render :show, status: :ok, location: api_v1_contract_url(@contract, format: :json)
     else
       render json: @contract.errors, status: :unprocessable_entity
     end
@@ -48,6 +48,6 @@ class Api::V1::ContractsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contract_params
-      params.fetch(:contract, {})
+      params.fetch(:contract, {}).permit(:description, :kind, :user_id)
     end
 end
