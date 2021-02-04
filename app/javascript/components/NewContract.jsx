@@ -32,23 +32,17 @@ class NewContract extends React.Component {
 
 
     onChange(event) {
-        console.log(this.state);
-        // event.target.name = description
-        // event.target.value = asdasd
         this.setState(prevState => {
             let contract = Object.assign({}, prevState.contract);
             contract[event.target.name] = event.target.value;
             return { contract };
         })
-        console.log(this.state);
     }
 
     onSubmit(event) {
         event.preventDefault();
-        console.log("Nig");
         const url = "/api/v1/contracts.json";
         const { contract } = this.state;
-        console.log(contract);
 
         const body = {
             contract
@@ -88,7 +82,13 @@ class NewContract extends React.Component {
               <form onSubmit={this.onSubmit}>
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label">Description</label>
-                  <textarea name="description" className="form-control" rows="2" onChange={this.onChange}></textarea>
+                      <textarea
+                          name="description"
+                          className="form-control"
+                          rows="2"
+                          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                          onChange={this.onChange}>
+                      </textarea>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="kind" className="form-label">Kind of contract</label>
