@@ -52,3 +52,9 @@ Contract.create!([
    kind: 1,
    user_id: admin.id}
 ])
+
+# ENTRIES
+# #######
+5.times.each do |i|
+  Contract.first.entries.create!({details: "#{i.ordinalize} Entry", author_id: admin.id})
+end

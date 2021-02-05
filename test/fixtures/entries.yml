@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  details: MyText
+  filename: MyString
+  contract: one
+  author: one
+
+two:
+  details: MyText
+  filename: MyString
+  contract: two
+  author: two
