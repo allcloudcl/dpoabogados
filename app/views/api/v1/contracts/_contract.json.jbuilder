@@ -1,6 +1,6 @@
 json.extract! contract, :id, :description, :created_at, :updated_at
 json.path api_v1_contract_path(contract)
-json.kind contract.kind.titleize
+json.kind contract.kind.try { titleize }
 json.user do
     json.id contract.user.id
     json.dni contract.user.dni
