@@ -2,40 +2,44 @@ import React from "react";
 // import Contract from "./Contract";
 import { Link } from "react-router-dom";
 
-class Contracts extends React.Component {
+class Contract extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            contracts: []
+            contract: {
+                entries: []
+            }
         };
     }
 
     componentDidMount() {
-        fetch('/api/v1/contracts.json')
+        const id = this.props.match.params.id;
+        fetch('/api/v1/contracts/' + id + '.json')
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 }
                 throw new Error("Network response was not ok.");
             })
-            .then(contracts => this.setState({ contracts: contracts }))
+            .then(contract => this.setState({ contract: contract }))
             .catch(() => this.props.history.push("/"));
     }
 
     render() {
-        const { contracts } = this.state;
-        const allContracts = contracts.map((contract, index) => (
+        const { contract } = this.state;
+        const { entries } = this.state.contract;
+        const allEntries = entries.map((entry, index) => (
             <tr key={index}>
-                <td>{contract.id}</td>
-                <td>{contract.description}</td>
-                <td>{contract.user.name}</td>
-                <td>{contract.kind}</td>
-                <td><Link to={`/contracts/${contract.id}`}>Details</Link></td>
+                <td>{entry.id}</td>
+                <td>{entry.created_at}</td>
+                <td>{entry.details}</td>
+                <td>{entry.filename}</td>
+                <td>{entry.author}</td>
             </tr>
         ));
 
-        const noContract = (
+        const noEntry = (
             <tr>
                 <td></td>
                 <td></td>
@@ -47,26 +51,21 @@ class Contracts extends React.Component {
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">Contracts</h1>
-                <div className="btn-toolbar mb-2 mb-md-0">
-                  <div className="btn-group me-2">
-                    <Link to="/contracts/new" className="btn btn-sm btn-outline-secondary">New</Link>
-                  </div>
-                </div>
+                <h1 className="h2">Contract {contract.id}</h1>
               </div>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Description</th>
-                        <th>User</th>
-                        <th>Kind</th>
-                        <th>Options</th>
+                        <th>Date</th>
+                        <th>Details</th>
+                        <th>File</th>
+                        <th>Author</th>
                       </tr>
                     </thead>
                   <tbody>
-                    {contracts.length > 0 ? allContracts : noContract}
+                    {entries.length > 0 ? allEntries : noEntry}
                   </tbody>
                 </table>
               </div>
@@ -75,4 +74,4 @@ class Contracts extends React.Component {
     }
 }
 
-export default Contracts;
+export default Contract;
