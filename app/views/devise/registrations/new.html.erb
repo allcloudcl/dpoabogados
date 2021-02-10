@@ -6,8 +6,18 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :username, class: "visually-hidden" %><br />
-      <%= f.text_field :username, autofocus: true, placeholder: "Username", class: "form-control" %>
+      <%= f.label :first_name, class: "visually-hidden" %><br />
+      <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name, class: "visually-hidden" %><br />
+      <%= f.text_field :last_name, autofocus: true, placeholder: "Last Name", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :dni, class: "visually-hidden" %><br />
+      <%= f.text_field :dni, autofocus: true, placeholder: "01.234.567-8", class: "form-control" %>
     </div>
 
     <div class="field">

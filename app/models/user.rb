@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   ## Validations
-  validates :username, presence: true, uniqueness: {case_sensitive: false}
+  validates :username, uniqueness: {case_sensitive: false}
   # only allow letter, number, underscore and punctuation.
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   # Validate DNI. Follows the pattern XX.XXX.XXX-Y
