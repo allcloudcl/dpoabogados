@@ -1,4 +1,4 @@
-class Api::V1::ContractsController < ApplicationController
+class Api::V1::ContractsController < Api::V1::BaseController
   before_action :set_contract, only: %i[ show update destroy ]
 
   # GET /contracts

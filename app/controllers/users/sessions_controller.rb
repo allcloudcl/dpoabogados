@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-
   def create
     respond_to do |format|
        format.any(*navigational_formats) { super }
@@ -19,5 +18,4 @@ class Users::SessionsController < Devise::SessionsController
       user: resource
     }
   end
-
 end
