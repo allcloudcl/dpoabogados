@@ -1,35 +1,35 @@
-import React from "react";
-// import Contract from "./Contract";
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-class NewContract extends React.Component {
+import { createContract } from '../../actions/contracts';
+import { fetchUsers } from '../../actions/users';
+
+class ContractNew extends React.Component {
+    static defaultProps = {
+        isFetching: false,
+        message: null,
+        users: []
+    };
 
     constructor(props) {
         super(props);
+
         this.state = {
             contract: {
                 description: "",
                 kind: "",
                 user_id: ""
             },
-            users: []
+            users: [],
         };
 
         this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
-        fetch('/api/v1/users.json')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(users => this.setState({ users: users }));
+        this.props.dispatch(fetchUsers());
     }
-
 
     onChange(event) {
         this.setState(prevState => {
@@ -39,38 +39,22 @@ class NewContract extends React.Component {
         })
     }
 
-    onSubmit(event) {
-        event.preventDefault();
-        const url = "/api/v1/contracts.json";
-        const { contract } = this.state;
-
-        const body = {
-            contract
-        }
-
-        const token = document.querySelector('meta[name="csrf-token"]').content;
-
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "X-CSRF-TOKEN": token,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
+    doCreateContract = (e) => {
+        this.props.dispatch( createContract(this.state.contract))
+            .then(() =>
+                this.setState({contract: {
+                    description: '',
+                    kind: '',
+                    user_id: '',
+                }}),
+            )
             .then(response => this.props.history.push('/contracts'))
-            .catch(error => console.log(error.message));
+            .catch(error => console.log(error));
+        e.preventDefault();
     }
 
     render() {
-        const { users } = this.state;
-        const optionsUsers = users.map((user, index) => (
+        const optionsUsers = this.props.users.map((user, index) => (
             <option value={user.id} key={index}>{user.full_name}</option>
         ));
 
@@ -79,7 +63,7 @@ class NewContract extends React.Component {
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2">New Contract</h1>
               </div>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.doCreateContract}>
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label">Description</label>
                       <textarea
@@ -111,8 +95,16 @@ class NewContract extends React.Component {
                 </Link>
               </form>
             </>
-        )
+        );
     }
 }
 
-export default NewContract;
+function mapStateToProps(state) {
+    return {
+        isFetching: state.contracts.isFetching,
+        message: state.contracts.isFetching,
+        users: state.users.users,
+    };
+}
+
+export default connect(mapStateToProps)(ContractNew);

@@ -1,11 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LogOut from './Users/LogOut';
+import { connect } from 'react-redux';
+
+import { logoutUser } from '../actions/user';
 
 class Sidebar extends React.Component {
 
     constructor(props) {
         super(props);
+    }
+
+    doLogout = () => {
+        this.props.dispatch(logoutUser());
     }
 
     render() {
@@ -34,7 +40,7 @@ class Sidebar extends React.Component {
                         </NavLink>
                       </li>
                       <hr />
-                      <LogOut />
+                      <button className="nav-link" onClick={this.doLogout}>Sign out</button>
                     </ul>
                   </div>
                 </nav>
@@ -44,4 +50,10 @@ class Sidebar extends React.Component {
     }
 }
 
-export default Sidebar;
+function mapStateToProps(state) {
+    return {
+        init: state.runtime.initialNow,
+    };
+}
+
+export default connect(mapStateToProps)(Sidebar);

@@ -1,8 +1,14 @@
 import { combineReducers } from "redux";
 import auth from "./auth";
-import message from "./message";
+import runtime from './runtime';
+import navigation from './navigation';
+import contracts from './contracts';
+import users from './users';
 
 export default combineReducers({
-  auth,
-  message,
+    auth,
+    runtime,
+    navigation,
+    contracts,
+    users,
 });

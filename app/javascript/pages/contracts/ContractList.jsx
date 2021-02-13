@@ -1,8 +1,10 @@
 import React from "react";
 // import Contract from "./Contract";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { fetchContracts } from '../../actions/contracts';
 
-class Contracts extends React.Component {
+class ContractList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,21 +13,17 @@ class Contracts extends React.Component {
         };
     }
 
+    static defaultProps = {
+        isFetching: false,
+        contracts: [],
+    }
+
     componentDidMount() {
-        fetch('/api/v1/contracts.json')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(contracts => this.setState({ contracts: contracts }))
-            .catch(() => this.props.history.push("/"));
+        this.props.dispatch(fetchContracts());
     }
 
     render() {
-        const { contracts } = this.state;
-        const allContracts = contracts.map((contract, index) => (
+        const allContracts = this.props.contracts.map((contract, index) => (
             <tr key={index}>
                 <td>{contract.id}</td>
                 <td>{contract.description}</td>
@@ -66,7 +64,7 @@ class Contracts extends React.Component {
                       </tr>
                     </thead>
                   <tbody>
-                    {contracts.length > 0 ? allContracts : noContract}
+                    {this.props.contracts.length > 0 ? allContracts : noContract}
                   </tbody>
                 </table>
               </div>
@@ -75,4 +73,11 @@ class Contracts extends React.Component {
     }
 }
 
-export default Contracts;
+function mapStateToProps(state) {
+    return {
+        isFetching: state.contracts.isFetching,
+        contracts: state.contracts.contracts,
+    };
+}
+
+export default connect(mapStateToProps)(ContractList);

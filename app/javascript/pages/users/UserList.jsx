@@ -1,7 +1,8 @@
 import React from "react";
-// import Contract from "./Contract";
+import { connect } from 'react-redux';
+import { fetchUsers } from '../../actions/users';
 
-class Users extends React.Component {
+class UserList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -10,21 +11,17 @@ class Users extends React.Component {
         };
     }
 
+    static defaultProps = {
+        isFetching: false,
+        users: [],
+    }
+
     componentDidMount() {
-        fetch('/api/v1/users.json')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(users => this.setState({ users: users }))
-            .catch(() => this.props.history.push("/"));
+        this.props.dispatch(fetchUsers());
     }
 
     render() {
-        const { users } = this.state;
-        const allUsers = users.map((user, index) => (
+        const allUsers = this.props.users.map((user, index) => (
             <tr key={index}>
                 <td>{user.id}</td>
                     <td><code>{user.dni}</code></td>
@@ -72,7 +69,7 @@ class Users extends React.Component {
                       </tr>
                     </thead>
                   <tbody>
-                    {users.length > 0 ? allUsers : noUser}
+                    {this.props.users.length > 0 ? allUsers : noUser}
                   </tbody>
                 </table>
               </div>
@@ -81,4 +78,12 @@ class Users extends React.Component {
     }
 }
 
-export default Users;
+function mapStateToProps(state) {
+    return {
+        isFetching: state.users.isFetching,
+        users: state.users.users,
+    };
+}
+
+
+export default connect(mapStateToProps)(UserList);

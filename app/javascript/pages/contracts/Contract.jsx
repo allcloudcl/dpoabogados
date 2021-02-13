@@ -1,6 +1,6 @@
 import React from "react";
-// import Contract from "./Contract";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 class Contract extends React.Component {
 
@@ -15,15 +15,12 @@ class Contract extends React.Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        fetch('/api/v1/contracts/' + id + '.json')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(contract => this.setState({ contract: contract }))
-            .catch(() => this.props.history.push("/"));
+        axios.get('/api/v1/contracts/' + id)
+            .then(response => this.setState({ contract: response.data }))
+            .catch(error => {
+                console.log(error);
+                this.props.history.push('/');
+            });
     }
 
     render() {
