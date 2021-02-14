@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_042138) do
+ActiveRecord::Schema.define(version: 2021_02_14_222723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2021_02_10_042138) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "creditor", null: false
+    t.decimal "amount", null: false
+    t.integer "dues", null: false
+    t.boolean "grace_month", default: false
+    t.decimal "payment", null: false
+    t.decimal "value_fee", null: false
+    t.date "payday", null: false
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 

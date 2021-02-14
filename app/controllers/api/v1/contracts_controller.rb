@@ -48,6 +48,6 @@ class Api::V1::ContractsController < Api::V1::BaseController
 
     # Only allow a list of trusted parameters through.
     def contract_params
-      params.fetch(:contract, {}).permit(:description, :kind, :user_id)
+      params.fetch(:contract, {}).permit(:description, :kind, :user_id, :creditor, :amount, :dues, :grace_month, :payment, :value_fee, :payday)
     end
 end

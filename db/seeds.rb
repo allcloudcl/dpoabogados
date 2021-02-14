@@ -39,18 +39,54 @@ admin = User.create!({
 # CONTRACTS
 # ---------
 Contract.create!([
-  {description: "Contrato Deuda para Usuario. Lorem ipsum etc etc",
-   kind: 0,
-   user_id: user.id},
-  {description: "Contrato Deuda para Admin. Lorem ipsum etc etc",
-   kind: 0,
-   user_id: admin.id},
-  {description: "Contrato Jurídico para Usuario. Lorem ipsum etc etc",
-   kind: 1,
-   user_id: user.id},
-  {description: "Contrato Jurídico para Admin. Lorem ipsum etc etc",
-   kind: 1,
-   user_id: admin.id}
+  {
+    description: "Contrato Deuda para Usuario. Lorem ipsum etc etc",
+    kind: 0,
+    user_id: user.id,
+    creditor: "ChileDeudas",
+    amount: "130000.00",
+    dues: "12",
+    grace_month: false,
+    payment: "10000",
+    value_fee: "12000",
+    payday: Date.new.strftime("%m/%d/%Y"),
+  },
+  {
+    description: "Contrato Deuda para Admin. Lorem ipsum etc etc",
+    kind: 0,
+    user_id: admin.id,
+    creditor: "ChileDeudas",
+    amount: "130000.00",
+    dues: "12",
+    grace_month: true,
+    payment: "10000",
+    value_fee: "12000",
+    payday: Date.new.strftime("%m/%d/%Y"),
+  },
+  {
+    description: "Contrato Jurídico para Usuario. Lorem ipsum etc etc",
+    kind: 1,
+    user_id: user.id,
+    creditor: "ChileDeudas",
+    amount: "130000.00",
+    dues: "12",
+    grace_month: false,
+    payment: "10000",
+    value_fee: "12000",
+    payday: Date.new.strftime("%m/%d/%Y"),
+  },
+  {
+    description: "Contrato Jurídico para Admin. Lorem ipsum etc etc",
+    kind: 1,
+    user_id: admin.id,
+    creditor: "ChileDeudas",
+    amount: "130000.00",
+    dues: "12",
+    grace_month: true,
+    payment: "10000",
+    value_fee: "12000",
+    payday: Date.new.strftime("%m/%d/%Y"),
+  }
 ])
 
 # ENTRIES

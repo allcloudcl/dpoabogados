@@ -19,7 +19,14 @@ class ContractNew extends React.Component {
             contract: {
                 description: "",
                 kind: "",
-                user_id: ""
+                user_id: "",
+                creditor: "",
+                amount: "",
+                dues: "",
+                grace_month: false,
+                payment: "",
+                value_fee: "",
+                payday: "",
             },
             users: [],
         };
@@ -74,6 +81,7 @@ class ContractNew extends React.Component {
                           onChange={this.onChange}>
                       </textarea>
                 </div>
+
                 <div className="mb-3">
                   <label htmlFor="kind" className="form-label">Kind of contract</label>
                   <select name="kind" className="form-select" onChange={this.onChange}>
@@ -81,15 +89,97 @@ class ContractNew extends React.Component {
                     <option value="legal">Legal</option>
                   </select>
                 </div>
+
                 <div className="mb-3">
                   <label htmlFor="user_id" className="form-label">User</label>
                   <select name="user_id" className="form-select" onChange={this.onChange}>
                     {optionsUsers}
                   </select>
                 </div>
+
+                <div className="mb-3">
+                  <label htmlFor="creditor" className="form-label">Creditor</label>
+                      <input
+                          name="creditor"
+                          className="form-control"
+                          placeholder="Lorem ipsum"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="amount" className="form-label">Amount</label>
+                      <input
+                          type="number"
+                          name="amount"
+                          className="form-control"
+                          step="any"
+                          placeholder="10.000,00"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="dues" className="form-label">Dues</label>
+                      <input
+                          type="number"
+                          name="dues"
+                          className="form-control"
+                          placeholder="12"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="grace_month" className="form-label">Grace Month</label>
+                      <input
+                          type="checkbox"
+                          name="grace_month"
+                          className="checkbox"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="payment" className="form-label">Payment</label>
+                      <input
+                          type="number"
+                          name="payment"
+                          className="form-control"
+                          step="any"
+                          placeholder="10.000,00"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="value_fee" className="form-label">Value Fee</label>
+                      <input
+                          type="number"
+                          name="value_fee"
+                          className="form-control"
+                          step="any"
+                          placeholder="10.000,00"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="payday" className="form-label">Payday</label>
+                      <input
+                          type="date"
+                          name="payday"
+                          className="form-control"
+                          step="any"
+                          placeholder="10.000,00"
+                          onChange={this.onChange}>
+                      </input>
+                </div>
+
                 <button type="submit" className="btn btn-primary">
                   Create Contract
                 </button>
+
                 <Link type="button" to="/contracts" className="btn btn-secondary">
                   Back
                 </Link>
