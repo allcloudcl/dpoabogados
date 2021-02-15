@@ -66,7 +66,6 @@ body {
     }
 
     static isAuthenticated(token) {
-        // We check if app runs with backend mode
         if (token) return true;
         if (!token) return;
     }
@@ -79,7 +78,7 @@ body {
         this.setState({password: event.target.value});
     }
 
-    doLogin = (e) => {
+    doLogin = (event) => {
         this.setState({
             isFetching: true,
         });
@@ -90,7 +89,7 @@ body {
                 password: this.state.password,
             }),
         );
-        e.preventDefault();
+        event.preventDefault();
 
     }
 

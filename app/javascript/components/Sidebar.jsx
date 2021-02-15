@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { logoutUser } from '../actions/user';
 
@@ -11,9 +12,10 @@ class Sidebar extends React.Component {
     }
 
     doLogout = () => {
-        this.props.dispatch(logoutUser())
-            .then(response => this.props.history.push('/login'))
-            .catch(error => console.log(error));
+        this.props.dispatch(logoutUser());
+        return (
+            <Redirect to="/" />
+        )
     }
 
     render() {

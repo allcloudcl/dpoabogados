@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 
 import { logoutUser } from '../actions/user';
 
-import LayoutComponent from './Layout';
+import Layout from './Layout';
 import Login from '../pages/Login';
 
 const PrivateRoute = ({dispatch, component, ...rest}) => {
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Router>
               <Switch>
                 <Route path="/login" exact component={Login} />
-                <PrivateRoute path="/" dispatch={this.props.dispatch} component={LayoutComponent} />
+                <PrivateRoute path="/" dispatch={this.props.dispatch} component={Layout} />
               </Switch>
             </Router>
         )

@@ -58,7 +58,7 @@ class ContractNew extends React.Component {
     }
 
     doCreateContract = (e) => {
-        this.props.dispatch( createContract(this.state.contract))
+        this.props.dispatch(createContract(this.state.contract))
             .then(() =>
                 this.setState({contract: {
                     description: '',
