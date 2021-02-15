@@ -68,11 +68,11 @@ class ContractNew extends React.Component {
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">New Contract</h1>
+                <h1 className="h2">Nuevo Contrato</h1>
               </div>
               <form onSubmit={this.doCreateContract}>
                 <div className="mb-3">
-                  <label htmlFor="description" className="form-label">Description</label>
+                  <label htmlFor="description" className="form-label">Descripción</label>
                       <textarea
                           name="description"
                           className="form-control"
@@ -83,22 +83,22 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="kind" className="form-label">Kind of contract</label>
+                  <label htmlFor="kind" className="form-label">Tipo de Contrato</label>
                   <select name="kind" className="form-select" onChange={this.onChange}>
-                    <option value="debt">Debt</option>
+                    <option value="debt">Deuda</option>
                     <option value="legal">Legal</option>
                   </select>
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="user_id" className="form-label">User</label>
+                  <label htmlFor="user_id" className="form-label">Usuario</label>
                   <select name="user_id" className="form-select" onChange={this.onChange}>
                     {optionsUsers}
                   </select>
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="creditor" className="form-label">Creditor</label>
+                  <label htmlFor="creditor" className="form-label">Acreedor</label>
                       <input
                           name="creditor"
                           className="form-control"
@@ -108,7 +108,7 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="amount" className="form-label">Amount</label>
+                  <label htmlFor="amount" className="form-label">Monto</label>
                       <input
                           type="number"
                           name="amount"
@@ -120,7 +120,7 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="dues" className="form-label">Dues</label>
+                  <label htmlFor="dues" className="form-label">Cuotas</label>
                       <input
                           type="number"
                           name="dues"
@@ -131,7 +131,7 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="grace_month" className="form-label">Grace Month</label>
+                  <label htmlFor="grace_month" className="form-label">Mes de Gracia</label>
                       <input
                           type="checkbox"
                           name="grace_month"
@@ -141,7 +141,7 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="payment" className="form-label">Payment</label>
+                  <label htmlFor="payment" className="form-label">Pago</label>
                       <input
                           type="number"
                           name="payment"
@@ -153,7 +153,7 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="value_fee" className="form-label">Value Fee</label>
+                  <label htmlFor="value_fee" className="form-label">Valor Cuota</label>
                       <input
                           type="number"
                           name="value_fee"
@@ -165,7 +165,7 @@ class ContractNew extends React.Component {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="payday" className="form-label">Payday</label>
+                  <label htmlFor="payday" className="form-label">Día de Pago</label>
                       <input
                           type="date"
                           name="payday"
@@ -177,11 +177,11 @@ class ContractNew extends React.Component {
                 </div>
 
                 <button type="submit" className="btn btn-primary">
-                  Create Contract
+                  Crear Contrato
                 </button>
 
                 <Link type="button" to="/contracts" className="btn btn-secondary">
-                  Back
+                  Volver
                 </Link>
               </form>
             </>

@@ -48,24 +48,19 @@ class UserList extends React.Component {
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">Users</h1>
-                <div className="btn-toolbar mb-2 mb-md-0">
-                  <div className="btn-group me-2">
-                    <button type="button" className="btn btn-sm btn-outline-secondary">New</button>
-                  </div>
-                </div>
+                <h1 className="h2">Usuarios</h1>
               </div>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>DNI</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
+                        <th>RUT</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
                       </tr>
                     </thead>
                   <tbody>

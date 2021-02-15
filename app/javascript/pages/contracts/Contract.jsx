@@ -59,16 +59,16 @@ class Contract extends React.Component {
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h2 className="h2">Contract #{contract.id}</h2>
+                <h2 className="h2">Contracto #{contract.id}</h2>
               </div>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
                       <tr>
-                        <th>Client Name</th>
-                        <th>DNI</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>Nombre del Cliente</th>
+                        <th>RUT</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
                       </tr>
                     </thead>
                   <tbody>
@@ -81,16 +81,16 @@ class Contract extends React.Component {
                   </tbody>
                 </table>
               </div>
-              <h3 className="h3">Entries</h3>
+              <h3 className="h3">Bitácora</h3>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Date</th>
-                        <th>Details</th>
-                        <th>File</th>
-                        <th>Author</th>
+                        <th>Fecha</th>
+                        <th>Detalles</th>
+                        <th>Archivo</th>
+                        <th>Autor</th>
                       </tr>
                     </thead>
                   <tbody>
@@ -99,7 +99,7 @@ class Contract extends React.Component {
                 </table>
               </div>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h3 className="h3">New Entry</h3>
+                <h3 className="h3">Nueva Entrada</h3>
               </div>
               <EntryNew contract_id={this.props.match.params.id}/>
             </>

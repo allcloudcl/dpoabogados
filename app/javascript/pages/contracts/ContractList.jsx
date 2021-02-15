@@ -29,7 +29,7 @@ class ContractList extends React.Component {
                 <td>{contract.description}</td>
                 <td>{contract.user.name}</td>
                 <td>{contract.kind}</td>
-                <td><Link to={`/contracts/${contract.id}`}>Details</Link></td>
+                <td><Link to={`/contracts/${contract.id}`}>Detalles</Link></td>
             </tr>
         ));
 
@@ -45,10 +45,10 @@ class ContractList extends React.Component {
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">Contracts</h1>
+                <h1 className="h2">Contratos</h1>
                 <div className="btn-toolbar mb-2 mb-md-0">
                   <div className="btn-group me-2">
-                    <Link to="/contracts/new" className="btn btn-sm btn-outline-secondary">New</Link>
+                    <Link to="/contracts/new" className="btn btn-sm btn-outline-secondary">Nuevo</Link>
                   </div>
                 </div>
               </div>
@@ -57,10 +57,10 @@ class ContractList extends React.Component {
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Description</th>
-                        <th>User</th>
-                        <th>Kind</th>
-                        <th>Options</th>
+                        <th>Descripción</th>
+                        <th>Usuario</th>
+                        <th>Tipo de Contrato</th>
+                        <th>Opciones</th>
                       </tr>
                     </thead>
                   <tbody>

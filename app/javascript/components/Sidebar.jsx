@@ -11,7 +11,9 @@ class Sidebar extends React.Component {
     }
 
     doLogout = () => {
-        this.props.dispatch(logoutUser());
+        this.props.dispatch(logoutUser())
+            .then(response => this.props.history.push('/login'))
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -24,23 +26,23 @@ class Sidebar extends React.Component {
                       <li className="nav-item">
                         <NavLink to="/" exact className="nav-link">
                           <span data-feather="home"></span>
-                          Dashboard
+                          Principal
                         </NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink to="/contracts" className="nav-link">
                           <span data-feather="file"></span>
-                          Contracts
+                          Contratos
                         </NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink to="/users" className="nav-link">
                           <span data-feather="users"></span>
-                          Users
+                          Usuarios
                         </NavLink>
                       </li>
                       <hr />
-                      <button className="nav-link" onClick={this.doLogout}>Sign out</button>
+                      <button className="nav-link" onClick={this.doLogout}>Salir</button>
                     </ul>
                   </div>
                 </nav>

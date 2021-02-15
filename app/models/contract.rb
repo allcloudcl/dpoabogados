@@ -3,5 +3,5 @@ class Contract < ApplicationRecord
   has_many :entries
 
   # Two types of contracts: Deuda, and Jurídico
-  enum kind: [:debt, :legal], _prefix: :kind
+  enum kind: [:deuda, :legal], _prefix: :kind
 end

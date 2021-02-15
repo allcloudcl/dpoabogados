@@ -110,7 +110,7 @@ body {
                   {this.state.style}
                 </style>
                 <form className="form-signin" onSubmit={this.doLogin}>
-                  <h2 className="h2 mb-3 fw-normal">Log in</h2>
+                  <h2 className="h2 mb-3 fw-normal">Inicia Sesion</h2>
                   <input
                     className="form-control"
                     value={this.state.login}
@@ -118,7 +118,7 @@ body {
                     type="text"
                     required
                     name="login"
-                    placeholder="Email or username"
+                    placeholder="Correo o Nombre de Usuario"
                   />
                   <div>
                     <input
@@ -128,15 +128,15 @@ body {
                       type="password"
                       required
                       name="password"
-                      placeholder="Password"
+                      placeholder="Contraseña"
                     />
                   </div>
                   <div className="actions">
                     <button className="w-100 btn btn-lg btn-primary" type="submit">
-                      {this.props.isFetching ? 'Loading...' : 'Log in'}
+                      {this.props.isFetching ? 'Cargando...' : 'Inicia Sesión'}
                     </button>
                   </div>
-                  <a href="/sign_up">Sign up</a>
+                  <a href="/sign_up">Regístrate</a>
                   <br />
                 </form>
               </div>

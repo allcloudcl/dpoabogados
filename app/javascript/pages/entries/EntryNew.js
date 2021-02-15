@@ -52,7 +52,7 @@ class EntryNew extends React.Component {
     render() {
         return (
               <form onSubmit={this.doCreateEntry}>
-                <label htmlFor="details" className="form-label">Details</label>
+                <label htmlFor="details" className="form-label">Detalles</label>
                 <div className="input-group mb-3">
                   <textarea
                     name="details"
@@ -63,20 +63,19 @@ class EntryNew extends React.Component {
                   </textarea>
                 </div>
 
-                <label htmlFor="document" className="form-label">Document</label>
+                <label htmlFor="document" className="form-label">Archivo</label>
                 <div className="input-group mb-3">
                   <input
                     type="file"
                     name="document"
                     className="form-control"
-                    placeholder="Upload your document"
                     onChange={this.onFileChange}>
                   </input>
                 </div>
 
                 <div className="mb-3">
                   <button type="submit" className="btn btn-primary">
-                    Create Entry
+                    Crear Entrada
                   </button>
                 </div>
               </form>
