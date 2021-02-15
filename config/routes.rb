@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :contracts
+      resources :contracts do
+        resources :entries, only: [:create, :update, :destroy]
+      end
       resources :users
     end
   end
