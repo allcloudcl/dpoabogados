@@ -37,6 +37,6 @@ class Api::V1::EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.fetch(:entry, {}).permit(:details, :filename, :author_id)
+      params.fetch(:entry, {}).permit(:details, :document, :author_id)
     end
 end
