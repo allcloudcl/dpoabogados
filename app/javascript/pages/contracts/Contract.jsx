@@ -23,11 +23,11 @@ class Contract extends React.Component {
             }
         };
 
-        this.handler = this.handler.bind(this);
+        this.handlerUpdateContract = this.handlerUpdateContract.bind(this);
     }
 
-    handler() {
-        this.componentDidMount();
+    handlerUpdateContract(contract) {
+        this.setState({contract: contract});
     }
 
     componentDidMount() {
@@ -107,7 +107,7 @@ class Contract extends React.Component {
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h3 className="h3">Nueva Entrada</h3>
               </div>
-              <EntryNew contract_id={this.props.match.params.id} handler={this.handler}/>
+              <EntryNew contract_id={this.props.match.params.id} handlerUpdateContract={this.handlerUpdateContract}/>
             </>
         )
     }

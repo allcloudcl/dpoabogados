@@ -35,16 +35,10 @@ class EntryNew extends React.Component {
     }
 
     doCreateEntry = (e) => {
-        console.log(axios);
         axios.post('/api/v1/contracts/' + this.props.contract_id + '/entries', this.state.entry)
-            .then(() =>
-                this.setState({entry: {
-                    details: '',
-                    document: '',
-                    author_id: JSON.parse(localStorage.getItem('user')).id,
-                }}),
+            .then((response) =>
+                this.props.handlerUpdateContract(response.data)
             )
-            .then(response => this.props.handler())
             .catch(error => console.log(error));
         e.preventDefault();
     }
