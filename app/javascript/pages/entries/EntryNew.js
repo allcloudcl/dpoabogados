@@ -44,7 +44,7 @@ class EntryNew extends React.Component {
                     author_id: JSON.parse(localStorage.getItem('user')).id,
                 }}),
             )
-            .then(response => this.props.history.push('/contracts' + this.props.contract_id))
+            .then(response => this.props.handler())
             .catch(error => console.log(error));
         e.preventDefault();
     }
@@ -83,11 +83,4 @@ class EntryNew extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        isFetching: state.contracts.isFetching,
-        user: state.users.user,
-    };
-}
-
-export default connect(mapStateToProps)(EntryNew);
+export default EntryNew;
