@@ -1,6 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+import { EntryNew } from '../entries';
 
 class Contract extends React.Component {
 
@@ -8,7 +10,16 @@ class Contract extends React.Component {
         super(props);
         this.state = {
             contract: {
-                entries: []
+                id: "",
+                description: "",
+                creditor: "",
+                amount: "",
+                dues: "",
+                grace_month: false,
+                value_fee: "",
+                payday: "",
+                entries: [],
+                user: {}
             }
         };
     }
@@ -48,33 +59,29 @@ class Contract extends React.Component {
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h2 className="h2">Contract {contract.id}</h2>
+                <h2 className="h2">Contract #{contract.id}</h2>
               </div>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
                       <tr>
-                        <th>Description</th>
-                        <th>Kind</th>
-                        <th>Creditor</th>
-                        <th>Dues</th>
-                        <th>Payday</th>
+                        <th>Client Name</th>
+                        <th>DNI</th>
+                        <th>Phone</th>
+                        <th>Email</th>
                       </tr>
                     </thead>
                   <tbody>
                     <tr>
-                        <td>{contract.description}</td>
-                        <td>{contract.kind}</td>
-                        <td>{contract.creditor}</td>
-                        <td>{contract.dues}</td>
-                        <td>{contract.payday}</td>
+                        <td>{contract.user.full_name}</td>
+                        <td>{contract.user.dni}</td>
+                        <td>{contract.user.phone}</td>
+                        <td>{contract.user.email}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h3 className="h3">Entries</h3>
-              </div>
+              <h3 className="h3">Entries</h3>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
@@ -94,6 +101,7 @@ class Contract extends React.Component {
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h3 className="h3">New Entry</h3>
               </div>
+              <EntryNew contract_id={this.props.match.params.id}/>
             </>
         )
     }
