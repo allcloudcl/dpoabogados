@@ -18,20 +18,21 @@ class ContractNew extends React.Component {
         this.state = {
             contract: {
                 description: "",
-                kind: "",
+                kind: "deuda",
                 user_id: "",
                 creditor: "",
-                amount: "",
-                dues: "",
+                amount: 0,
+                dues: 1,
                 grace_month: false,
-                payment: "",
-                value_fee: "",
+                payment: 0,
+                value_fee: 0,
                 payday: "",
             },
             users: [],
         };
 
         this.onChange = this.onChange.bind(this);
+        this.updateValueFee = this.updateValueFee.bind(this);
     }
 
     componentDidMount() {
@@ -42,6 +43,16 @@ class ContractNew extends React.Component {
         this.setState(prevState => {
             let contract = Object.assign({}, prevState.contract);
             contract[event.target.name] = event.target.value;
+            return { contract };
+        })
+    }
+
+    updateValueFee(event) {
+        this.onChange(event);
+        this.setState(prevState => {
+            let contract = Object.assign({}, prevState.contract);
+            let value_fee = (contract.amount - contract.payment)/contract.dues;
+            contract['value_fee'] = value_fee;
             return { contract };
         })
     }
@@ -84,8 +95,8 @@ class ContractNew extends React.Component {
 
                 <div className="mb-3">
                   <label htmlFor="kind" className="form-label">Tipo de Contrato</label>
-                  <select name="kind" className="form-select" onChange={this.onChange}>
-                    <option value="debt">Deuda</option>
+                  <select name="kind" className="form-select" value={this.state.contract.kind} onChange={this.onChange}>
+                    <option value="deuda">Deuda</option>
                     <option value="legal">Legal</option>
                   </select>
                 </div>
@@ -115,7 +126,25 @@ class ContractNew extends React.Component {
                           className="form-control"
                           step="any"
                           placeholder="10.000,00"
-                          onChange={this.onChange}>
+                          min="0"
+                          value={this.state.contract.amount}
+                          onChange={this.updateValueFee}
+                      >
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="payment" className="form-label">Pago por Adelantado</label>
+                      <input
+                          type="number"
+                          name="payment"
+                          className="form-control"
+                          step="any"
+                          placeholder="10.000,00"
+                          min="0"
+                          value={this.state.contract.payment}
+                          onChange={this.updateValueFee}
+                      >
                       </input>
                 </div>
 
@@ -126,29 +155,10 @@ class ContractNew extends React.Component {
                           name="dues"
                           className="form-control"
                           placeholder="12"
-                          onChange={this.onChange}>
-                      </input>
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="grace_month" className="form-label">Mes de Gracia</label>
-                      <input
-                          type="checkbox"
-                          name="grace_month"
-                          className="checkbox"
-                          onChange={this.onChange}>
-                      </input>
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="payment" className="form-label">Pago</label>
-                      <input
-                          type="number"
-                          name="payment"
-                          className="form-control"
-                          step="any"
-                          placeholder="10.000,00"
-                          onChange={this.onChange}>
+                          min="1"
+                          value={this.state.contract.dues}
+                          onChange={this.updateValueFee}
+                      >
                       </input>
                 </div>
 
@@ -160,7 +170,21 @@ class ContractNew extends React.Component {
                           className="form-control"
                           step="any"
                           placeholder="10.000,00"
+                          min="0"
+                          value={this.state.contract.value_fee}
                           onChange={this.onChange}>
+                      </input>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="grace_month" className="form-label">Mes de Gracia</label>
+                      <input
+                          type="checkbox"
+                          name="grace_month"
+                          className="checkbox"
+                          value={this.state.contract.grace_month}
+                          onChange={this.onChange}
+                      >
                       </input>
                 </div>
 
