@@ -82,7 +82,7 @@ class ContractNew extends React.Component {
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
                 <h1 className="h2">Nuevo Contrato</h1>
               </div>
-              <form onSubmit={this.doCreateContract} className="row g-3">
+              <form onSubmit={this.doCreateContract} className="row g-3 mt-3">
                 <div>
                   <label htmlFor="description" className="form-label">Descripción</label>
                   <textarea
