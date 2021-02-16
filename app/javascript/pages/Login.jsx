@@ -36,6 +36,7 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -60,7 +61,13 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
+.form-signin-logo  {
+  max-width: 100%;
+}
+.login-background {
+  background-image: url("login-background.png");
+  background-position: center;
+}
             `,
         };
     }
@@ -104,14 +111,15 @@ body {
         }
 
         return (
-            <div>
+            <div className="d-flex vw-100 vh-100 login-background">
                 <style>
                   {this.state.style}
                 </style>
-                <form className="form-signin" onSubmit={this.doLogin}>
-                  <h2 className="h2 mb-3 fw-normal">Inicia Sesion</h2>
+                <form className="form-signin p-4" onSubmit={this.doLogin}>
+                  <img src="/logo-md.png" className="form-signin-logo mb-3"/>
+                  <h3 className="h3 fw-normal mb-3">Inicia Sesión</h3>
                   <input
-                    className="form-control"
+                    className="form-control mb-3"
                     value={this.state.login}
                     onChange={this.changeLogin}
                     type="text"
@@ -121,7 +129,7 @@ body {
                   />
                   <div>
                     <input
-                      className="form-control"
+                      className="form-control mb-3"
                       value={this.state.password}
                       onChange={this.changePassword}
                       type="password"
@@ -130,7 +138,7 @@ body {
                       placeholder="Contraseña"
                     />
                   </div>
-                  <div className="actions">
+                  <div className="actions mb-3">
                     <button className="w-100 btn btn-lg btn-primary" type="submit">
                       {this.props.isFetching ? 'Cargando...' : 'Inicia Sesión'}
                     </button>
