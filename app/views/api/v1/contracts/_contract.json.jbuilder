@@ -12,7 +12,12 @@ end
 json.entries contract.entries.with_attached_document do |entry|
     json.id entry.id
     json.details entry.details
-    json.filename entry.document.filename
+    if entry.document.attached?
+        json.document do
+            json.filename entry.document.filename
+            json.link rails_blob_path(entry.document, disposition: "attachment")
+        end
+    end
     json.author_id entry.author_id
     json.created_at entry.created_at.try { strftime("%F") }
     json.author entry.author.full_name

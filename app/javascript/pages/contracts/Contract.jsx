@@ -43,20 +43,24 @@ class Contract extends React.Component {
         const { entries } = this.state.contract;
         const allEntries = entries.map((entry, index) => (
             <tr key={index}>
-                <td>{entry.id}</td>
-                <td>{entry.created_at}</td>
-                <td>{entry.details}</td>
-                <td>{entry.filename}</td>
-                <td>{entry.author}</td>
+              <td>{entry.id}</td>
+              <td>{entry.created_at}</td>
+              <td>{entry.details}</td>
+              <td>
+                {entry.document != null &&
+                  <a href={entry.document.link}>{entry.document.filename}</a>
+                }
+              </td>
+              <td>{entry.author}</td>
             </tr>
         ));
 
         const noEntry = (
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
         );
 
@@ -67,20 +71,20 @@ class Contract extends React.Component {
               </div>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>Nombre del Cliente</th>
-                        <th>RUT</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                      </tr>
-                    </thead>
+                  <thead>
+                    <tr>
+                      <th>Nombre del Cliente</th>
+                      <th>RUT</th>
+                      <th>Teléfono</th>
+                      <th>Correo</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <tr>
-                        <td>{contract.user.full_name}</td>
-                        <td>{contract.user.dni}</td>
-                        <td>{contract.user.phone}</td>
-                        <td>{contract.user.email}</td>
+                      <td>{contract.user.full_name}</td>
+                      <td>{contract.user.dni}</td>
+                      <td>{contract.user.phone}</td>
+                      <td>{contract.user.email}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -88,15 +92,15 @@ class Contract extends React.Component {
               <h3 className="h3">Bitácora</h3>
               <div className="table-responsive">
                 <table className="table table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Fecha</th>
-                        <th>Detalles</th>
-                        <th>Archivo</th>
-                        <th>Autor</th>
-                      </tr>
-                    </thead>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Fecha</th>
+                      <th>Detalles</th>
+                      <th>Archivo</th>
+                      <th>Autor</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     {entries.length > 0 ? allEntries : noEntry}
                   </tbody>
