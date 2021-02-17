@@ -11,16 +11,13 @@ class EntryNew extends React.Component {
             document: null,
             author_id: JSON.parse(localStorage.getItem('user')).id,
         };
-
-        this.onChange = this.onChange.bind(this);
-        this.onFileChange = this.onFileChange.bind(this);
     }
 
-    onChange(event) {
+    onChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }
 
-    onFileChange(event) {
+    onFileChange = (event) => {
         this.setState({[event.target.name]: event.target.files[0]});
     }
 

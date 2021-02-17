@@ -4,11 +4,10 @@ class LogOut extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleLogout = this.handleLogout.bind(this);
     }
 
-    handleLogout(e) {
-        e.preventDefault();
+    handleLogout = (event) => {
+        event.preventDefault();
         let that = this;
 
         fetch('/users/sign_out', {

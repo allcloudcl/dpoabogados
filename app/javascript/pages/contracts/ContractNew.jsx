@@ -30,16 +30,13 @@ class ContractNew extends React.Component {
             },
             users: [],
         };
-
-        this.onChange = this.onChange.bind(this);
-        this.updateValueFee = this.updateValueFee.bind(this);
     }
 
     componentDidMount() {
         this.props.dispatch(fetchUsers());
     }
 
-    onChange(event) {
+    onChange = (event) => {
         this.setState(prevState => {
             let contract = Object.assign({}, prevState.contract);
             contract[event.target.name] = event.target.value;
@@ -47,7 +44,7 @@ class ContractNew extends React.Component {
         })
     }
 
-    updateValueFee(event) {
+    updateValueFee = (event) => {
         this.onChange(event);
         this.setState(prevState => {
             let contract = Object.assign({}, prevState.contract);

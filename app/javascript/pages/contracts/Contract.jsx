@@ -22,11 +22,9 @@ class Contract extends React.Component {
                 user: {}
             }
         };
-
-        this.handlerUpdateContract = this.handlerUpdateContract.bind(this);
     }
 
-    handlerUpdateContract(contract) {
+    handlerUpdateContract = (contract) => {
         this.setState({contract: contract});
     }
 
