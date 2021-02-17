@@ -2,6 +2,20 @@
 
 # Models
 
+```
+* Users:
+    * Belongs to: Role
+    * Has many: Contracts
+* Contracts:
+    * Has many: Entries
+    * Belongs to: User
+* Entries:
+    * Belongs to: Contract
+    * Belongs to: Author (User)
+* Roles:
+    * Has many: Users
+```
+
 ## Roles
 
 There are two roles for now:
@@ -24,12 +38,15 @@ Two types of contracts:
 ```
 Index                 (packs/index)
 └── App               (components/App)
-    ├── Navbar        (components/Navbar)
-    ├── Sidebar       (components/Sidebar)
-    └── Routes        (routes/Index)
-        ├── Home      (components/Home)      (path=/)
-        ├── Contracts (components/Contracts) (path=/contracts)
-        ├── Users     (components/Users)     (path=/users)
+    ├── Login         (components/Login)
+    └── Layout        (components/Layout)
+        ├── Navbar    (components/Navbar)
+        ├── Sidebar   (components/Sidebar)
+        ├── Home      (components/Home)
+        ├── Contracts (pages/contracts)
+        │   ├── ContractNew
+        │   ├── Contract
+        │   └── ContractList
         ...
 ```
 
