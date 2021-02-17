@@ -7,11 +7,9 @@ class EntryNew extends React.Component {
         super(props);
 
         this.state = {
-            entry: {
-                details: "",
-                document: null,
-                author_id: JSON.parse(localStorage.getItem('user')).id,
-            }
+            details: "",
+            document: null,
+            author_id: JSON.parse(localStorage.getItem('user')).id,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -19,28 +17,35 @@ class EntryNew extends React.Component {
     }
 
     onChange(event) {
-        this.setState(prevState => {
-            let entry = Object.assign({}, prevState.entry);
-            entry[event.target.name] = event.target.value;
-            return { entry };
-        })
+        this.setState({[event.target.name]: event.target.value});
     }
 
     onFileChange(event) {
-        this.setState(prevState => {
-            let entry = Object.assign({}, prevState.entry);
-            entry[event.target.name] = event.target.files[0];
-            return { entry };
-        })
+        this.setState({[event.target.name]: event.target.files[0]});
     }
 
-    doCreateEntry = (e) => {
-        axios.post('/api/v1/contracts/' + this.props.contract_id + '/entries', this.state.entry)
+    doCreateEntry = (event) => {
+        event.preventDefault();
+
+        // We're sending a _file_, which _needs_ be be sent in a _formData_,
+        // because, how do the hell to we send a file through a JSON (actually
+        // we can, something with base64, but it's more annoying than what
+        // we're gonna do now)
+        let data = new FormData();
+        Object.entries(this.state).forEach(([key, value]) => {
+            if (value != null && value != undefined) {
+                data.append(`entry[${key}]`, value);
+            }
+        })
+
+        axios.post('/api/v1/contracts/' + this.props.contract_id + '/entries', data)
             .then((response) =>
+                // Once we've sent the new entry to the server, we recieve the
+                // contract updated (with the new entry), we send the contract
+                // to the parent (Contract) to update its state
                 this.props.handlerUpdateContract(response.data)
             )
             .catch(error => console.log(error));
-        e.preventDefault();
     }
 
     render() {
@@ -53,7 +58,9 @@ class EntryNew extends React.Component {
                     className="form-control"
                     rows="2"
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    onChange={this.onChange}>
+                    onChange={this.onChange}
+                    required
+                  >
                   </textarea>
                 </div>
 
@@ -63,7 +70,8 @@ class EntryNew extends React.Component {
                     type="file"
                     name="document"
                     className="form-control"
-                    onChange={this.onFileChange}>
+                    onChange={this.onFileChange}
+                  >
                   </input>
                 </div>
 
