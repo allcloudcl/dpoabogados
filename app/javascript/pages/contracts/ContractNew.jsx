@@ -23,7 +23,7 @@ class ContractNew extends React.Component {
                 creditor: "",
                 amount: 0,
                 dues: 1,
-                grace_month: false,
+                grace_months: 0,
                 payment: 0,
                 value_fee: 0,
                 payday: "",
@@ -170,32 +170,34 @@ class ContractNew extends React.Component {
 
                 <div className="col-md-6">
                   <label htmlFor="value_fee" className="form-label">Valor Cuota</label>
-                    <input
-                      type="number"
-                      name="value_fee"
-                      className="form-control"
-                      step="0.01"
-                      placeholder="10.000,00"
-                      min="0"
-                      value={this.state.contract.value_fee}
-                      onChange={this.onChange}
-                      required
-                    >
-                    </input>
+                  <input
+                    type="number"
+                    name="value_fee"
+                    className="form-control"
+                    step="0.01"
+                    placeholder="10.000,00"
+                    min="0"
+                    value={this.state.contract.value_fee}
+                    onChange={this.onChange}
+                    required
+                  >
+                  </input>
                 </div>
 
                 <div className="col-md-3">
-                  <div className="form-check form-switch">
-                    <input
-                      type="checkbox"
-                      name="grace_month"
-                      className="form-check-input"
-                      value={this.state.contract.grace_month}
-                      onChange={this.onChange}
-                    >
-                    </input>
-                    <label htmlFor="grace_month" className="form-check-label">Mes de Gracia</label>
-                  </div>
+                  <label htmlFor="grace_months" className="form-label">Meses de Gracia</label>
+                  <input
+                    type="number"
+                    name="grace_months"
+                    className="form-control"
+                    step="1"
+                    min="0"
+                    max="4"
+                    value={this.state.contract.grace_months}
+                    onChange={this.onChange}
+                    required
+                  >
+                  </input>
                 </div>
 
                 <div className="col-md-3">

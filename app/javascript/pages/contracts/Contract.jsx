@@ -15,7 +15,7 @@ class Contract extends React.Component {
                 creditor: "",
                 amount: "",
                 dues: "",
-                grace_month: false,
+                grace_months: "",
                 value_fee: "",
                 payday: "",
                 entries: [],
