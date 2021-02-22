@@ -2,10 +2,16 @@ import React from "react";
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas, faUser, faHome, faFile } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
 import { logoutUser } from '../actions/user';
 
 import Layout from './Layout';
 import Login from '../pages/Login';
+
+library.add(fas, far, faUser, faHome, faFile);
 
 const PrivateRoute = ({dispatch, component, ...rest}) => {
     // if there's no user logged in

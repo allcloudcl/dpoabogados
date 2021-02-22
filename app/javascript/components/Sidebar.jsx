@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { logoutUser } from '../actions/user';
 
 class Sidebar extends React.Component {
@@ -27,20 +29,17 @@ class Sidebar extends React.Component {
                     <ul className="nav flex-column">
                       <li className="nav-item">
                         <NavLink to="/" exact className="nav-link">
-                          <span data-feather="home"></span>
-                          Principal
+                          <FontAwesomeIcon icon={['fas', 'home']} /> Principal
                         </NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink to="/contracts" className="nav-link">
-                          <span data-feather="file"></span>
-                          Contratos
+                          <FontAwesomeIcon icon={['far', 'file']} /> Contratos
                         </NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink to="/users" className="nav-link">
-                          <span data-feather="users"></span>
-                          Usuarios
+                          <FontAwesomeIcon icon={['fas', 'user']} /> Usuarios
                         </NavLink>
                       </li>
                       <hr />

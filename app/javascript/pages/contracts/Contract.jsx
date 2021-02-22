@@ -82,7 +82,7 @@ class Contract extends React.Component {
                   <tbody>
                     <tr>
                       <td>{contract.user.full_name}</td>
-                      <td>{contract.user.dni}</td>
+                      <td><code>{contract.user.dni}</code></td>
                       <td>{contract.user.phone}</td>
                       <td>{contract.user.email}</td>
                     </tr>
