@@ -22,33 +22,33 @@ class Sidebar extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-              <div className="row">
-                <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                  <div className="position-sticky pt-3">
-                    <ul className="nav flex-column">
-                      <li className="nav-item">
-                        <NavLink to="/" exact className="nav-link">
-                          <FontAwesomeIcon icon={['fas', 'home']} /> Principal
-                        </NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink to="/contracts" className="nav-link">
-                          <FontAwesomeIcon icon={['far', 'file']} /> Contratos
-                        </NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink to="/users" className="nav-link">
-                          <FontAwesomeIcon icon={['fas', 'user']} /> Usuarios
-                        </NavLink>
-                      </li>
-                      <hr />
-                      <button className="nav-link" onClick={this.doLogout}>Salir</button>
-                    </ul>
-                  </div>
-                </nav>
+            <nav id="sidebarMenu" className="col-md-3 col-lg-2 bg-light sidebar active">
+              <div className="navbar-brand me-0 px-3">
+                <img src="/brand.png" alt="" width="24" height="24" className="d-inline-block align-top me-2"/>
+                ChileDeudas
               </div>
-            </div>
+              <div className="position-sticky pt-3">
+                <ul className="nav flex-column">
+                  <li className="nav-item">
+                    <NavLink to="/" exact className="nav-link">
+                      <FontAwesomeIcon icon={['fas', 'home']} /> Principal
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/contracts" className="nav-link">
+                      <FontAwesomeIcon icon={['far', 'file']} /> Contratos
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/users" className="nav-link">
+                      <FontAwesomeIcon icon={['fas', 'user']} /> Usuarios
+                    </NavLink>
+                  </li>
+                  <hr />
+                  <button className="nav-link" onClick={this.doLogout}>Salir</button>
+                </ul>
+              </div>
+            </nav>
         )
     }
 }

@@ -19,17 +19,19 @@ class Layout extends React.Component {
 
     render() {
         return (
-            <>
+            <div className="wrapper">
+              <Sidebar />
+              <main className="col-md-9 ms-sm-auto col-lg-10 content">
                 <Navbar />
-                <Sidebar />
-                <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <Switch>
-                        <Route path="/" exact component={Home} />
-                        <Route path="/contracts" component={Contracts} />
-                        <Route path="/users" exact component={Users} />
-                    </Switch>
-                </main>
-            </>
+                <div className="p-3">
+                  <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/contracts" component={Contracts} />
+                    <Route path="/users" exact component={Users} />
+                  </Switch>
+                </div>
+              </main>
+            </div>
         )
     }
 }

@@ -4,16 +4,24 @@ class Navbar extends React.Component {
     render() {
         return (
             <header className="navbar navbar-dark bg-dark sticky-top flex-md-nowrap p-0 shadow">
-              <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
-                <img src="/brand.png" alt="" width="24" height="24" className="d-inline-block align-top me-2"/>
-                ChileDeudas
-              </a>
-              <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
+              <SidebarToggle target="sidebarMenu" toggle="active" />
             </header>
         )
     }
+}
+
+const SidebarToggle = (props) => {
+    function toggleSidebar() {
+        let target = document.getElementById(props.target);
+        target.classList.toggle(props.toggle);
+    }
+
+    return (
+          <button onClick={toggleSidebar} className="navbar-toggler" type="button" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+    )
+
 }
 
 export default Navbar;
