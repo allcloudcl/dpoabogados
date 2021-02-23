@@ -49,6 +49,15 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Server deployment automation...
+  gem "capistrano", "~> 3.15", require: false
+  # ... For rails...
+  gem "capistrano-rails", "~> 1.6", require: false
+  # ... Using rbenv for ruby...
+  gem "capistrano-rbenv", "~> 2.2", require: false
+  # ... And passenger as the web server.
+  gem "capistrano-passenger", "~> 0.2.0", require: false
 end
 
 group :test do
