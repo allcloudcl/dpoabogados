@@ -1,11 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { logoutUser } from '../actions/user';
 
 class Sidebar extends React.Component {
 
@@ -13,17 +9,10 @@ class Sidebar extends React.Component {
         super(props);
     }
 
-    doLogout = () => {
-        this.props.dispatch(logoutUser());
-        return (
-            <Redirect to="/" />
-        )
-    }
-
     render() {
         return (
             <nav id="sidebarMenu" className="col-md-3 col-lg-2 bg-light sidebar active">
-              <div className="navbar-brand me-0 px-3">
+              <div className="navbar-brand me-0 px-3 shadow">
                 <img src="/brand.png" alt="" width="24" height="24" className="d-inline-block align-top me-2"/>
                 ChileDeudas
               </div>
@@ -44,8 +33,6 @@ class Sidebar extends React.Component {
                       <FontAwesomeIcon icon={['fas', 'user']} /> Usuarios
                     </NavLink>
                   </li>
-                  <hr />
-                  <button className="nav-link" onClick={this.doLogout}>Salir</button>
                 </ul>
               </div>
             </nav>
@@ -53,10 +40,4 @@ class Sidebar extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        init: state.runtime.initialNow,
-    };
-}
-
-export default connect(mapStateToProps)(Sidebar);
+export default Sidebar;

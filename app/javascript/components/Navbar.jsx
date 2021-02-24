@@ -1,11 +1,43 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { logoutUser } from '../actions/user';
 
 class Navbar extends React.Component {
+
+    doLogout = () => {
+        this.props.dispatch(logoutUser());
+        return (
+            <Redirect to="/" />
+        )
+    }
+
     render() {
         return (
-            <header className="navbar navbar-dark bg-dark sticky-top flex-md-nowrap p-0 shadow">
-              <SidebarToggle target="sidebarMenu" toggle="active" />
-            </header>
+            <nav className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top p-0 shadow">
+              <div className="container-fluid">
+                <SidebarToggle target="sidebarMenu" toggle="active" />
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="navbar-collapse collapse" id="navbarMenu">
+                  <ul className="navbar-nav px-3 ms-auto">
+                    <li className="nav-item dropdown">
+                      <a id="dropdown01" className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <FontAwesomeIcon icon={['fas', 'cog']} />
+                      </a>
+                      <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown01">
+                        <li>
+                          <a className="dropdown-item" href="/" onClick={this.doLogout}>Salir</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
         )
     }
 }
@@ -17,11 +49,17 @@ const SidebarToggle = (props) => {
     }
 
     return (
-          <button onClick={toggleSidebar} className="navbar-toggler" type="button" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <button onClick={toggleSidebar} className="btn btn-dark" type="button" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle sidebar">
             <span className="navbar-toggler-icon"></span>
           </button>
     )
 
 }
 
-export default Navbar;
+function mapStateToProps(state) {
+    return {
+        init: state.runtime.initialNow,
+    };
+}
+
+export default connect(mapStateToProps)(Navbar);
