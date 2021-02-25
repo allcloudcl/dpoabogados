@@ -15,7 +15,15 @@ class Api::V1::ContractsController < Api::V1::BaseController
   # POST /contracts
   # POST /contracts.json
   def create
-    @contract = Contract.new(contract_params)
+    password = Devise.friendly_token.first(8)
+
+    @user = User.new(user_params)
+    @user.password = password
+    @user.password_confirmation = password
+
+    @user.save!
+
+    @contract = @user.contracts.build(contract_params)
 
     if @contract.save
       render :show, status: :created, location: api_v1_contract_url(@contract, format: :json)
@@ -49,5 +57,10 @@ class Api::V1::ContractsController < Api::V1::BaseController
     # Only allow a list of trusted parameters through.
     def contract_params
       params.fetch(:contract, {}).permit(:description, :kind, :user_id, :creditor, :amount, :dues, :grace_months, :payment, :value_fee, :payday)
+    end
+
+    # Only allow a list of trusted parameters through.
+    def user_params
+      params.fetch(:user, {}).permit(:first_name, :last_name, :phone, :email, :dni, :address)
     end
 end

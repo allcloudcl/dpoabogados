@@ -19,7 +19,7 @@ class ContractNew extends React.Component {
             contract: {
                 description: "",
                 kind: "deuda",
-                user_id: "",
+                // user_id: "",
                 creditor: "",
                 amount: 0,
                 dues: 1,
@@ -28,12 +28,29 @@ class ContractNew extends React.Component {
                 value_fee: 0,
                 payday: "",
             },
+            user: {
+                first_name: "",
+                last_name: "",
+                phone: "",
+                email: "",
+                dni: "",
+                address: "",
+
+            },
             users: [],
         };
     }
 
     componentDidMount() {
         this.props.dispatch(fetchUsers());
+    }
+
+    onUserChange = (event) => {
+        this.setState(prevState => {
+            let user = Object.assign({}, prevState.user);
+            user[event.target.name] = event.target.value;
+            return { user };
+        })
     }
 
     onChange = (event) => {
@@ -56,7 +73,7 @@ class ContractNew extends React.Component {
     }
 
     doCreateContract = (e) => {
-        this.props.dispatch(createContract(this.state.contract))
+        this.props.dispatch(createContract(this.state))
             .then(() =>
                 this.setState({contract: {
                     description: '',
@@ -80,6 +97,96 @@ class ContractNew extends React.Component {
                 <h1 className="h2">Nuevo Contrato</h1>
               </div>
               <form onSubmit={this.doCreateContract} className="row g-3 mt-3">
+
+                <h4 className="mb-3">Usuario</h4>
+
+                <div className="col-md-3">
+                  <label htmlFor="first_name" className="form-label">Nombre</label>
+                  <input
+                    type="string"
+                    name="first_name"
+                    className="form-control"
+                    placeholder="Juan"
+                    value={this.state.user.first_name}
+                    onChange={this.onUserChange}
+                    required
+                  >
+                  </input>
+                </div>
+
+                <div className="col-md-3">
+                  <label htmlFor="last_name" className="form-label">Apellido</label>
+                  <input
+                    type="string"
+                    name="last_name"
+                    className="form-control"
+                    placeholder="Pérez"
+                    value={this.state.user.last_name}
+                    onChange={this.onUserChange}
+                    required
+                  >
+                  </input>
+                </div>
+
+                <div className="col-md-3">
+                  <label htmlFor="phone" className="form-label">Teléfono</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    className="form-control"
+                    placeholder="+56123456789"
+                    pattern="[+]{1}[0-9]{11,14}"
+                    value={this.state.user.phone}
+                    onChange={this.onUserChange}
+                    required
+                  >
+                  </input>
+                </div>
+
+                <div className="col-md-3">
+                  <label htmlFor="email" className="form-label">Correo</label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="ejemplo@chiledeudas.cl"
+                    value={this.state.user.email}
+                    onChange={this.onUserChange}
+                    required
+                  >
+                  </input>
+                </div>
+
+                <div className="col-md-3">
+                  <label htmlFor="grace_months" className="form-label">RUT</label>
+                  <input
+                    type="string"
+                    name="dni"
+                    className="form-control"
+                    placeholder="12.234.567-8"
+                    value={this.state.user.dni}
+                    onChange={this.onUserChange}
+                    required
+                  >
+                  </input>
+                </div>
+
+                <div className="col-md-9">
+                  <label htmlFor="address" className="form-label">Dirección</label>
+                  <input
+                    type="string"
+                    name="address"
+                    className="form-control"
+                    value={this.state.user.address}
+                    onChange={this.onUserChange}
+                    required
+                  >
+                  </input>
+                </div>
+
+
+                <h4 className="mb-3">Contrato</h4>
+
                 <div>
                   <label htmlFor="description" className="form-label">Descripción</label>
                   <textarea
@@ -98,13 +205,6 @@ class ContractNew extends React.Component {
                   <select name="kind" className="form-select" value={this.state.contract.kind} onChange={this.onChange}>
                     <option value="deuda">Deuda</option>
                     <option value="legal">Legal</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="user_id" className="form-label">Usuario</label>
-                  <select name="user_id" className="form-select" onChange={this.onChange}>
-                    {optionsUsers}
                   </select>
                 </div>
 
