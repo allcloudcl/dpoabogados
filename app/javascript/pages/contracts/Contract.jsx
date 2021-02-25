@@ -69,25 +69,67 @@ class Contract extends React.Component {
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h2 className="h2">Contracto #{contract.id}</h2>
               </div>
-              <div className="table-responsive">
-                <table className="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>Nombre del Cliente</th>
-                      <th>RUT</th>
-                      <th>Teléfono</th>
-                      <th>Correo</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{contract.user.full_name}</td>
-                      <td><code>{contract.user.dni}</code></td>
-                      <td>{contract.user.phone}</td>
-                      <td>{contract.user.email}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="row">
+                <div className="col">
+                  <div className="table-responsive">
+                    <table className="table table-striped table-sm">
+                      <tbody>
+                        <tr>
+                          <th>Descripción</th>
+                          <td>{contract.description}</td>
+                        </tr>
+                        <tr>
+                          <th>Acreedor</th>
+                          <td>{contract.creditor}</td>
+                        </tr>
+                        <tr>
+                          <th>Monto</th>
+                          <td>{contract.amount}</td>
+                        </tr>
+                        <tr>
+                          <th>Cuotas</th>
+                          <td>{contract.dues}</td>
+                        </tr>
+                        <tr>
+                          <th>Valor Cuota</th>
+                          <td>{contract.value_fee}</td>
+                        </tr>
+                        <tr>
+                          <th>Meses de Gracia</th>
+                          <td>{contract.grace_months}</td>
+                        </tr>
+                        <tr>
+                          <th>Día de Pago</th>
+                          <td>{contract.payday}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="table-responsive">
+                    <table className="table table-striped table-sm">
+                      <tbody>
+                        <tr>
+                          <th>Nombre del Cliente</th>
+                          <td>{contract.user.full_name}</td>
+                        </tr>
+                        <tr>
+                          <th>RUT</th>
+                          <td><code>{contract.user.dni}</code></td>
+                        </tr>
+                        <tr>
+                          <th>Teléfono</th>
+                          <td>{contract.user.phone}</td>
+                        </tr>
+                        <tr>
+                          <th>Correo</th>
+                          <td>{contract.user.email}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <h3 className="h3">Bitácora</h3>
               <div className="table-responsive">
