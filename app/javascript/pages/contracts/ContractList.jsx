@@ -1,5 +1,4 @@
 import React from "react";
-// import Contract from "./Contract";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchContracts } from '../../actions/contracts';
@@ -25,20 +24,21 @@ class ContractList extends React.Component {
     render() {
         const allContracts = this.props.contracts.map((contract, index) => (
             <tr key={index}>
-                <td>{contract.id}</td>
-                <td>{contract.description}</td>
-                <td>{contract.user.name}</td>
-                <td>{contract.kind}</td>
-                <td><Link to={`/contracts/${contract.id}`}>Detalles</Link></td>
+              <td>{contract.id}</td>
+              <td>{contract.description}</td>
+              <td>{contract.user.full_name}</td>
+              <td>{contract.kind}</td>
+              <td><Link to={`/contracts/${contract.id}`}>Detalles</Link></td>
             </tr>
         ));
+        console.log(this.props.contracts);
 
         const noContract = (
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
         );
 
