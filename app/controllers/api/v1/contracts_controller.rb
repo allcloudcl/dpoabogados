@@ -4,7 +4,7 @@ class Api::V1::ContractsController < Api::V1::BaseController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
+    @contracts = Contract.all.includes(:user, entries: [ :author, document_attachment: :blob ])
   end
 
   # GET /contracts/1
@@ -51,7 +51,7 @@ class Api::V1::ContractsController < Api::V1::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contract
-      @contract = Contract.find(params[:id])
+      @contract = Contract.includes(:user, entries: [ :author, document_attachment: :blob ]).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

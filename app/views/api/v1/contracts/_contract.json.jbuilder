@@ -9,7 +9,7 @@ json.user do
     json.phone contract.user.phone
 end
 
-json.entries contract.entries.with_attached_document do |entry|
+json.entries contract.entries do |entry|
     json.id entry.id
     json.details entry.details
     if entry.document.attached?
