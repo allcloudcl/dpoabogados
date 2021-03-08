@@ -46,6 +46,8 @@ const SidebarToggle = (props) => {
     function toggleSidebar() {
         let target = document.getElementById(props.target);
         target.classList.toggle(props.toggle);
+        let main = document.getElementById('main');
+        main.classList.toggle('active');
     }
 
     return (

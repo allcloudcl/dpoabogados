@@ -21,7 +21,7 @@ class Layout extends React.Component {
         return (
             <div className="wrapper">
               <Sidebar />
-              <main className="col-md-9 ms-sm-auto col-lg-10 content">
+              <main className="content" id="main">
                 <Navbar />
                 <div className="p-3">
                   <Switch>
