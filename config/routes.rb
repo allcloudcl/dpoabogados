@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :contracts do
+        post 'search', on: :collection
         resources :entries, only: [:create, :update, :destroy]
       end
       resources :users

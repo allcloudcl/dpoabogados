@@ -11,4 +11,15 @@ class Contract < ApplicationRecord
 
   # Two types of contracts: Deuda, and Jurídico
   enum kind: [:deuda, :legal], _prefix: :kind
+
+  # search[:dni]
+  # search[:description]
+  # search[:kind]
+  def self.search(query)
+    contracts = Contract.joins(:user)
+    contracts = contracts.where("dni like ?", "%#{query[:dni]}%") if query[:dni].present?
+    contracts = contracts.where("description like ?", "%#{query[:description]}%") if query[:description].present?
+    contracts = contracts.where(kind: query[:kind]) if query[:kind].present?
+    contracts
+  end
 end

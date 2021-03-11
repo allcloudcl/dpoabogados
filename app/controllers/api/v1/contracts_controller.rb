@@ -48,6 +48,11 @@ class Api::V1::ContractsController < Api::V1::BaseController
     @contract.destroy
   end
 
+  def search
+    @contracts = Contract.search(search_params)
+    @contracts = @contracts.includes(:user)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contract
@@ -62,5 +67,9 @@ class Api::V1::ContractsController < Api::V1::BaseController
     # Only allow a list of trusted parameters through.
     def user_params
       params.fetch(:user, {}).permit(:first_name, :last_name, :phone, :email, :dni, :address)
+    end
+
+    def search_params
+      params.fetch(:search, {}).permit(:dni, :description, :kind)
     end
 end

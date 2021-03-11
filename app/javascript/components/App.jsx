@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas, faCog, faFile, faHome, faUser  } from '@fortawesome/free-solid-svg-icons';
+import { fas, faCog, faFile, faHome, faSearch, faUser  } from '@fortawesome/free-solid-svg-icons';
 
 import { logoutUser } from '../actions/user';
 
 import Layout from './Layout';
 import Login from '../pages/Login';
 
-library.add(fas, far, faCog, faFile, faHome, faUser);
+library.add(fas, far, faCog, faFile, faHome, faSearch, faUser);
 
 const PrivateRoute = ({dispatch, component, ...rest}) => {
     // if there's no user logged in

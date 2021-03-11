@@ -31,7 +31,6 @@ class ContractList extends React.Component {
               <td><Link to={`/contracts/${contract.id}`}>Detalles</Link></td>
             </tr>
         ));
-        console.log(this.props.contracts);
 
         const noContract = (
             <tr>
@@ -48,6 +47,7 @@ class ContractList extends React.Component {
                 <h1 className="h2">Contratos</h1>
                 <div className="btn-toolbar mb-2 mb-md-0">
                   <div className="btn-group me-2">
+                    <Link to="/contracts/search" className="btn btn-sm btn-outline-secondary">Buscar</Link>
                     <Link to="/contracts/new" className="btn btn-sm btn-outline-secondary">Nuevo</Link>
                   </div>
                 </div>
