@@ -194,6 +194,7 @@ class ContractNew extends React.Component {
                     className="form-control"
                     rows="2"
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    value={this.state.contract.description}
                     onChange={this.onChange}
                     required
                   >
@@ -202,7 +203,12 @@ class ContractNew extends React.Component {
 
                 <div>
                   <label htmlFor="kind" className="form-label">Tipo de Contrato</label>
-                  <select name="kind" className="form-select" value={this.state.contract.kind} onChange={this.onChange}>
+                  <select
+                    name="kind"
+                    className="form-select"
+                    value={this.state.contract.kind}
+                    onChange={this.onChange}
+                  >
                     <option value="deuda">Deuda</option>
                     <option value="legal">Legal</option>
                   </select>
@@ -214,6 +220,7 @@ class ContractNew extends React.Component {
                     name="creditor"
                     className="form-control"
                     placeholder="Lorem ipsum"
+                    value={this.state.contract.creditor}
                     onChange={this.onChange}
                     required
                   >

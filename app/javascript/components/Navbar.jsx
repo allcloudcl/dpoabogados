@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { logoutUser } from '../actions/user';
@@ -30,7 +30,14 @@ class Navbar extends React.Component {
                       </a>
                       <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown01">
                         <li>
-                          <a className="dropdown-item" href="/" onClick={this.doLogout}>Salir</a>
+                          <Link className="dropdown-item" to="/support">
+                            <FontAwesomeIcon icon={['far', 'question-circle']} /> Soporte
+                          </Link>
+                        </li>
+                        <li>
+                          <a className="dropdown-item" href="/" onClick={this.doLogout}>
+                            <FontAwesomeIcon icon={['fas', 'sign-out-alt']} /> Salir
+                          </a>
                         </li>
                       </ul>
                     </li>

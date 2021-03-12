@@ -3,15 +3,25 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas, faCog, faFile, faHome, faSearch, faUser  } from '@fortawesome/free-solid-svg-icons';
+import { far, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { fas, faCog, faFile, faHome, faSearch, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { logoutUser } from '../actions/user';
 
 import Layout from './Layout';
 import Login from '../pages/Login';
 
-library.add(fas, far, faCog, faFile, faHome, faSearch, faUser);
+library.add(
+    fas,
+    far,
+    faCog,
+    faFile,
+    faHome,
+    faSearch,
+    faSignOutAlt,
+    faUser,
+    faQuestionCircle
+);
 
 const PrivateRoute = ({dispatch, component, ...rest}) => {
     // if there's no user logged in

@@ -8,6 +8,10 @@ import Home from "./Home";
 import { Users } from "../pages/users";
 import { Contracts } from "../pages/contracts";
 
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import Support from "../pages/Support";
+
 class Layout extends React.Component {
     constructor(props) {
         super(props);
@@ -28,6 +32,10 @@ class Layout extends React.Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/contracts" component={Contracts} />
                     <Route path="/users" exact component={Users} />
+
+                    <Route path="/about" exact component={About} />
+                    <Route path="/contact" exact component={Contact} />
+                    <Route path="/support" exact component={Support} />
                   </Switch>
                 </div>
               </main>
