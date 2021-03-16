@@ -29,6 +29,11 @@ class Sidebar extends React.Component {
                     </NavLink>
                   </li>
                   <li className="nav-item">
+                    <NavLink to="/agenda" className="nav-link">
+                      <FontAwesomeIcon icon={['far', 'calendar-alt']} /> Agenda
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
                     <NavLink to="/users" className="nav-link">
                       <FontAwesomeIcon icon={['fas', 'user']} /> Usuarios
                     </NavLink>

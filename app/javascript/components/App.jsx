@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { far, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { far, faCalendarAlt, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { fas, faCog, faFile, faHome, faSearch, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { logoutUser } from '../actions/user';
@@ -14,6 +14,7 @@ import Login from '../pages/Login';
 library.add(
     fas,
     far,
+    faCalendarAlt,
     faCog,
     faFile,
     faHome,
