@@ -149,7 +149,7 @@ class ContractNew extends React.Component {
                     type="email"
                     name="email"
                     className="form-control"
-                    placeholder="ejemplo@chiledeudas.cl"
+                    placeholder="ejemplo@allcloud.cl"
                     value={this.state.user.email}
                     onChange={this.onUserChange}
                     required

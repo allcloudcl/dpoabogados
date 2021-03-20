@@ -14,7 +14,7 @@ class Sidebar extends React.Component {
             <nav id="sidebarMenu" className="col-md-3 col-lg-2 bg-light sidebar active nav flex-column">
               <div className="navbar-brand me-0 px-3 shadow">
                 <img src="/brand.png" alt="" width="24" height="24" className="d-inline-block align-top me-2"/>
-                ChileDeudas
+                DPO AllCloud
               </div>
               <div className="position-sticky pt-3">
                 <ul className="nav flex-column">

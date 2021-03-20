@@ -1,4 +1,4 @@
-# Chile Debts
+# Lawyer DPO
 
 # Models
 
@@ -20,7 +20,7 @@
 
 There are two roles for now:
 * Normal: A client.
-* Admin/Lawyer: Works for ChileDeuda and manages Clients' contracts.
+* Admin/Lawyer: Works for the company and manages Clients' contracts.
 
 There are plans for a super_admin role. For rails_admin or something.
 

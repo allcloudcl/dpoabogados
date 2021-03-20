@@ -1,5 +1,5 @@
 {
-  "name": "chiledebts",
+  "name": "dpo",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.12.10",

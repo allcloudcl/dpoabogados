@@ -6,14 +6,14 @@ export default () => (
     <div className="p-5 row align-items-center h-50">
       <div className="col-md-6 h-100">
         <h1 className="display-5">
-          Software DPO ChileDeudas
+          Software DPO AllCloud
           <br />
           al Servicio de sus Clientes
         </h1>
       </div>
       <div className="col-md-6 h-100">
         <p className="lead">
-          DPO ChileDeudas mejora el servicio de atención al cliente. Nuestro
+          DPO AllCloud mejora el servicio de atención al cliente. Nuestro
           software está diseñado para satisfacer las necesidades de los
           clientes, preparar al Equipo para el éxito y Mantener el Negocio en
           Perfecta Sinfonía.
@@ -26,7 +26,7 @@ export default () => (
           <div className="card mb-4 shadow-sm h-100">
             <div className="card-body">
               <p className="card-text">
-                Bienvenido a ChileDeudas<br />
+                Bienvenido a DPO AllCloud<br />
                 Software de Gestión de Empresa
               </p>
             </div>
