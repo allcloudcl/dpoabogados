@@ -103,7 +103,7 @@ end
       title: "#{i.ordinalize} Schedule",
       body: "Lorem ipsum",
       start: DateTime.now,
-      end: DateTime.now + rand(0.3).round(2),
+      end: DateTime.now + rand(0..0.3).round(2),
     }
   )
 end
