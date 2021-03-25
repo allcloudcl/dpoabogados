@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   acts_as_token_authenticatable
 
+  before_create :build_default_calendar
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,6 +19,7 @@ class User < ApplicationRecord
   belongs_to :role
   has_many :contracts
   has_many :entries, foreign_key: 'author_id'
+  has_one :calendar
 
   def admin?
     /admin/i.match?(role.name)
@@ -42,5 +45,12 @@ class User < ApplicationRecord
       conditions[:email].downcase! if conditions[:email]
       where(conditions.to_h).first
     end
+  end
+
+  private
+  # https://stackoverflow.com/a/3809360/8872343
+  def build_default_calendar
+    build_calendar
+    true
   end
 end
