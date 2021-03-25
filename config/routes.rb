@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      resources :calendars
-      resources :contracts do
-        post 'search', on: :collection
-        resources :entries, only: [:create, :update, :destroy]
+  defaults format: :json do
+    namespace :api do
+      namespace :v1 do
+        resources :calendars
+        resources :contracts do
+          post 'search', on: :collection
+          resources :entries, only: [:create, :update, :destroy]
+        end
+        resources :users
       end
-      resources :users
     end
+    devise_for :users, controllers: {sessions: 'users/sessions'}
   end
 
   get 'home/index'
-  devise_for :users, defaults: { format: :json }, controllers: {sessions: 'users/sessions'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'home#index'
 
