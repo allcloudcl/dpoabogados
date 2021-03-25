@@ -10,7 +10,7 @@ class Contract < ApplicationRecord
   validates :value_fee, numericality: { greater_than_or_equal_to: 0 }
 
   # Two types of contracts: Deuda, and Jurídico
-  enum kind: [:deuda, :legal], _prefix: :kind
+  enum kind: [:deuda, :legal], _prefix: :kind, _default: :deuda
 
   # search[:dni]
   # search[:description]
