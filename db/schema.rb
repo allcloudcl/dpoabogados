@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_083017) do
+ActiveRecord::Schema.define(version: 2021_03_25_104306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,23 @@ ActiveRecord::Schema.define(version: 2021_03_25_083017) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "calendar_id", null: false
+    t.string "title", null: false
+    t.string "body", null: false
+    t.datetime "start", null: false
+    t.datetime "end", null: false
+    t.integer "category", default: 0, null: false
+    t.string "location"
+    t.boolean "read_only", default: false
+    t.string "color", default: "#000000"
+    t.string "bg_color"
+    t.string "drag_bg_color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["calendar_id"], name: "index_schedules_on_calendar_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -116,5 +133,6 @@ ActiveRecord::Schema.define(version: 2021_03_25_083017) do
   add_foreign_key "contracts", "users"
   add_foreign_key "entries", "contracts"
   add_foreign_key "entries", "users", column: "author_id"
+  add_foreign_key "schedules", "calendars"
   add_foreign_key "users", "roles"
 end

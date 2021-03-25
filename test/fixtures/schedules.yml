@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calendar: one
+  title: MyString
+  body: MyString
+  start: 2021-03-25 06:43:06
+  end: 2021-03-25 06:43:06
+  category: 0
+  location: MyString
+  read_only: false
+  color: MyString
+  bg_color: MyString
+  drag_bg_color: MyString
+
+two:
+  calendar: two
+  title: MyString
+  body: MyString
+  start: 2021-03-25 06:43:06
+  end: 2021-03-25 06:43:06
+  category: 0
+  location: MyString
+  read_only: false
+  color: MyString
+  bg_color: MyString
+  drag_bg_color: MyString

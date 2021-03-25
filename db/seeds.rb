@@ -94,3 +94,16 @@ Contract.create!([
 5.times.each do |i|
   Contract.first.entries.create!({details: "#{i.ordinalize} Entry", author_id: admin.id})
 end
+
+# SCHEDULES
+# #########
+5.times.each do |i|
+  Calendar.first.schedules.create!(
+    {
+      title: "#{i.ordinalize} Schedule",
+      body: "Lorem ipsum",
+      start: DateTime.now,
+      end: DateTime.now + rand(0.3).round(2),
+    }
+  )
+end
