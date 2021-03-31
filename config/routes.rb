@@ -7,6 +7,7 @@ Rails.application.routes.draw do
           post 'search', on: :collection
           resources :entries, only: [:create, :update, :destroy]
         end
+        resources :schedules
         resources :users
       end
     end
