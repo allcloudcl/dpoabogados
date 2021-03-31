@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: dpo_production
-  username: dpo
+  username: azureuser
   password: <%= ENV['DPO_DATABASE_PASSWORD'] %>
