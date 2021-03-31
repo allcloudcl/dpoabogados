@@ -97,13 +97,14 @@ end
 
 # SCHEDULES
 # #########
-5.times.each do |i|
-  Calendar.first.schedules.create!(
+10.times.each do |i|
+  date = DateTime.now + rand(-2..2).round(1) - rand(0..0.3).round(2)
+  Calendar.find(rand(1..2)).schedules.create!(
     {
       title: "#{i.ordinalize} Schedule",
       body: "Lorem ipsum",
-      start: DateTime.now,
-      end: DateTime.now + rand(0..0.3).round(2),
+      start: date,
+      end: date + rand(0..0.3).round(2),
     }
   )
 end

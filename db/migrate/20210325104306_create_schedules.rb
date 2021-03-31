@@ -12,6 +12,7 @@ class CreateSchedules < ActiveRecord::Migration[6.1]
       t.string :color, default: "#000000"
       t.string :bg_color
       t.string :drag_bg_color
+      t.string :border_color
 
       t.timestamps
     end

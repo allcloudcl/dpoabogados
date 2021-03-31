@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_114128) do
     t.string "color", default: "#000000"
     t.string "bg_color"
     t.string "drag_bg_color"
+    t.string "border_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["calendar_id"], name: "index_schedules_on_calendar_id"
