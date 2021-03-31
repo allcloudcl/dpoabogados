@@ -1,10 +1,23 @@
 import React from 'react';
 import Calendar from '@toast-ui/react-calendar';
+import axios from 'axios';
 
 class Agenda extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            schedules: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get('/api/v1/schedules')
+            .then(response => this.setState({ schedules: response.data }))
+            .catch(error => {
+                console.log(error);
+            });
 
     }
 
@@ -34,6 +47,7 @@ class Agenda extends React.Component {
                 scheduleView={['time']}
                 useCreationPopup={true}
                 useDetailPopup={true}
+                schedules={this.state.schedules}
               />
             </>
         );
