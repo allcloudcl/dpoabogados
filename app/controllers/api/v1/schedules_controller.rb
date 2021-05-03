@@ -1,4 +1,4 @@
-class Api::V1::SchedulesController < ApplicationController
+class Api::V1::SchedulesController < Api::V1::BaseController
   before_action :set_schedule, only: %i[ show update destroy ]
 
   # GET /schedules
@@ -18,7 +18,7 @@ class Api::V1::SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
 
     if @schedule.save
-      render :show, status: :created, location: @schedule
+      render :show, status: :created, location: api_v1_schedule_url(@schedule, format: :json)
     else
       render json: @schedule.errors, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Api::V1::SchedulesController < ApplicationController
   # PATCH/PUT /schedules/1.json
   def update
     if @schedule.update(schedule_params)
-      render :show, status: :ok, location: @schedule
+      render :show, status: :ok, location: api_v1_schedule_url(@schedule, format: :json)
     else
       render json: @schedule.errors, status: :unprocessable_entity
     end
@@ -48,6 +48,6 @@ class Api::V1::SchedulesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def schedule_params
-      params.fetch(:schedule, {})
+      params.fetch(:schedule, {}).permit(:calendar_id, :title, :body, :start, :end, :category, :location)
     end
 end

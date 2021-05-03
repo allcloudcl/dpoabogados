@@ -314,7 +314,6 @@ class ContractNew extends React.Component {
                     name="payday"
                     className="form-control"
                     step="any"
-                    placeholder="10.000,00"
                     onChange={this.onChange}
                     required
                   >

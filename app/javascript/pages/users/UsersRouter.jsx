@@ -3,7 +3,7 @@ import { Switch, Route, withRouter } from 'react-router';
 
 import UserList from './UserList';
 
-class Users extends React.Component {
+class UsersRouter extends React.Component {
     render() {
         return (
             <Switch>
@@ -13,4 +13,4 @@ class Users extends React.Component {
     }
 }
 
-export default withRouter(Users);
+export default withRouter(UsersRouter);

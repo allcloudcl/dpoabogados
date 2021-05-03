@@ -6,7 +6,7 @@ import Contract from './Contract';
 import ContractNew from './ContractNew';
 import ContractSearch from './ContractSearch';
 
-class Contracts extends React.Component {
+class ContractsRouter extends React.Component {
     render() {
         return (
             <Switch>
@@ -19,4 +19,4 @@ class Contracts extends React.Component {
     }
 }
 
-export default withRouter(Contracts);
+export default withRouter(ContractsRouter);

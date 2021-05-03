@@ -1,3 +1,19 @@
 @import 'tui-calendar/dist/tui-calendar';
 @import 'tui-date-picker/dist/tui-date-picker';
 @import 'tui-time-picker/dist/tui-time-picker';
+
+.tui-full-calendar-section-title {
+    width: 100%;
+}
+
+.tui-full-calendar-section-start-date, .tui-full-calendar-section-end-date {
+    width: 213px;
+}
+
+#calendar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    top: 64px;
+}

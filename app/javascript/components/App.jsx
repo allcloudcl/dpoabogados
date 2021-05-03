@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far, faCalendarAlt, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
-import { fas, faCog, faFile, faHome, faSearch, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { fas, faCog, faFile, faHome, faArrowLeft, faArrowRight, faSearch, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { logoutUser } from '../actions/user';
 
@@ -18,6 +18,8 @@ library.add(
     faCog,
     faFile,
     faHome,
+    faArrowLeft,
+    faArrowRight,
     faSearch,
     faSignOutAlt,
     faUser,
