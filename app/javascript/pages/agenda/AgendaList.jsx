@@ -52,6 +52,12 @@ class AgendaList extends React.Component {
             startDayOfWeek: 1,
         }
 
+        let template = {
+            milestoneTitle: () => { return "Metas" },
+            taskTitle: () => { return "Tareas" },
+            alldayTitle: () => { return "Todo el día" },
+        }
+
         return (
             <>
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -75,11 +81,10 @@ class AgendaList extends React.Component {
                 usageStatistics={false}
                 month={monthOptions}
                 week={weekOptions}
-                taskView={false}
-                scheduleView={['time']}
                 useCreationPopup={false}
                 useDetailPopup={true}
                 schedules={this.state.schedules}
+                template={template}
               />
             </>
         );
