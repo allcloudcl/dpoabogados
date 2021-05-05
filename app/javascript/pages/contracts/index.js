@@ -1,1 +1,1 @@
-export { default as ContractsRouter } from './ContractsRouter';
+export { default as ContractsRouter } from "./ContractsRouter";

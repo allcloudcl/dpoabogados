@@ -1,1 +1,1 @@
-export { default as SchedulesRouter } from './SchedulesRouter';
+export { default as SchedulesRouter } from "./SchedulesRouter";

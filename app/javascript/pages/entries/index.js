@@ -1,1 +1,1 @@
-export { default as EntryNew } from './EntryNew';
+export { default as EntryNew } from "./EntryNew";

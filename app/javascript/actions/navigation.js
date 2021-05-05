@@ -1,19 +1,19 @@
-import { TOGGLE_SIDEBAR, OPEN_SIDEBAR, CLOSE_SIDEBAR } from '../constants';
+import { TOGGLE_SIDEBAR, OPEN_SIDEBAR, CLOSE_SIDEBAR } from "../constants";
 
 export function toggleSidebar() {
-    return {
-        type: TOGGLE_SIDEBAR,
-    };
+  return {
+    type: TOGGLE_SIDEBAR,
+  };
 }
 
 export function openSidebar() {
-    return {
-        type: OPEN_SIDEBAR,
-    };
+  return {
+    type: OPEN_SIDEBAR,
+  };
 }
 
 export function closeSidebar() {
-    return {
-        type: CLOSE_SIDEBAR,
-    };
+  return {
+    type: CLOSE_SIDEBAR,
+  };
 }

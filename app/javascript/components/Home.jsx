@@ -26,7 +26,8 @@ export default () => (
           <div className="card mb-4 shadow-sm h-100">
             <div className="card-body">
               <p className="card-text">
-                Bienvenido a DPO AllCloud<br />
+                Bienvenido a DPO AllCloud
+                <br />
                 Software de Gestión de Empresa
               </p>
             </div>
@@ -38,9 +39,7 @@ export default () => (
         <Link to="/about">
           <div className="card mb-4 shadow-sm h-100">
             <div className="card-body">
-              <p className="card-text">
-                Directorio Empresa
-              </p>
+              <p className="card-text">Directorio Empresa</p>
             </div>
           </div>
         </Link>
@@ -50,9 +49,7 @@ export default () => (
         <Link to="/contracts/new">
           <div className="card mb-4 shadow-sm h-100">
             <div className="card-body">
-              <p className="card-text">
-                Recursos Jurídicos
-              </p>
+              <p className="card-text">Recursos Jurídicos</p>
             </div>
           </div>
         </Link>

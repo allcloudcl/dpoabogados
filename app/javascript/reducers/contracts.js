@@ -6,13 +6,13 @@ import {
   FETCH_CONTRACTS_REQUEST,
   FETCH_CONTRACTS_SUCCESS,
   FETCH_CONTRACTS_FAILURE,
-} from '../actions/contracts';
+} from "../actions/contracts";
 
 export default function contracts(
   state = {
     isFetching: false,
   },
-  action,
+  action
 ) {
   switch (action.type) {
     case CREATE_CONTRACT_INITIAL:
@@ -27,13 +27,13 @@ export default function contracts(
     case CREATE_CONTRACT_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        message: 'Contract created successfully',
+        message: "Contract created successfully",
       });
     case CREATE_CONTRACT_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         message:
-          'Due to security reasons contracts creation is closed in demo version. Please setup locally to test',
+          "Due to security reasons contracts creation is closed in demo version. Please setup locally to test",
       });
     case FETCH_CONTRACTS_REQUEST:
       return Object.assign({}, state, {
@@ -47,7 +47,7 @@ export default function contracts(
     case FETCH_CONTRACTS_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        message: 'Something wrong happened. Please come back later',
+        message: "Something wrong happened. Please come back later",
       });
     default:
       return state;

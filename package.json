@@ -31,5 +31,18 @@
     "prettier": "^2.2.1",
     "redux-devtools-extension": "^2.13.8",
     "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+      "prettier": "prettier --write"
+  },
+  "husky": {
+      "hooks": {
+          "pre-commit": "lint-staged"
+      }
+  },
+  "lint-staged": {
+      "app/javascript/**/*.{js,jsx,json,css,scss}": [
+          "prettier --write"
+      ]
   }
 }
