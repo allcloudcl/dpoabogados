@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_114128) do
+ActiveRecord::Schema.define(version: 2021_05_08_231928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_114128) do
     t.string "border_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_all_day"
     t.index ["calendar_id"], name: "index_schedules_on_calendar_id"
   end
 
