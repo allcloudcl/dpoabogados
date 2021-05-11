@@ -21,7 +21,7 @@ export function receiveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    authentication_token: user.authentication_token,
+    user: user,
   };
 }
 
@@ -97,7 +97,7 @@ export function loginUser(creds) {
         axios.defaults.headers.common["X-User-Email"] = object.user.email;
 
         // Dispatch the success action
-        dispatch(receiveLogin(object));
+        dispatch(receiveLogin(object.user));
         return Promise.resolve(object.user);
       })
       .catch((err) => console.error("Error: ", err));

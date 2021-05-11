@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { logoutUser } from "../actions/user";
+import { logoutUser } from "../actions/auth";
 
 class Navbar extends React.Component {
   doLogout = () => {

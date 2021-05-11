@@ -3,7 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-} from "../actions/user";
+} from "../actions/auth";
 
 const token = localStorage.getItem("token");
 export default function auth(
@@ -23,7 +23,7 @@ export default function auth(
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        errorMessage: "",
+        user: action.user,
       });
     case LOGIN_FAILURE:
       return Object.assign({}, state, {

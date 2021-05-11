@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import ReduxThunk from "redux-thunk";
 import axios from "axios";
 
 import App from "../components/App";
+import store from '../store';
 import reducers from "../reducers";
 
 // import Popper from 'popper.js';
@@ -23,8 +22,6 @@ if (token) {
 if (user) {
   axios.defaults.headers.common["X-User-Email"] = JSON.parse(user).email;
 }
-
-const store = createStore(reducers, applyMiddleware(ReduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>

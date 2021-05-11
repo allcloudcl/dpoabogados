@@ -4,6 +4,8 @@ import runtime from "./runtime";
 import navigation from "./navigation";
 import contracts from "./contracts";
 import users from "./users";
+import calendars from "./calendars";
+import schedules from "./schedules";
 
 export default combineReducers({
   auth,
@@ -11,4 +13,6 @@ export default combineReducers({
   navigation,
   contracts,
   users,
+  calendars,
+  schedules,
 });

@@ -25,7 +25,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { logoutUser } from "../actions/user";
+import { logoutUser } from "../actions/auth";
 
 import Layout from "./Layout";
 import Login from "../pages/Login";
