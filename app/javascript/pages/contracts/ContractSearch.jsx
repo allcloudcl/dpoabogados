@@ -15,8 +15,8 @@ function ContractSearch(props) {
 
   const onSearchChange = (event) => {
     setSearchParams((prevState) => {
-      return {...prevState, [event.target.name]: event.target.value}
-    })
+      return { ...prevState, [event.target.name]: event.target.value };
+    });
   };
 
   const submitSearch = (event) => {
@@ -36,7 +36,9 @@ function ContractSearch(props) {
       <td>{contract.description}</td>
       <td>{contract.user.full_name}</td>
       <td>{contract.kind}</td>
-      <td><Link to={`/contracts/${contract.id}`}>Detalles</Link></td>
+      <td>
+        <Link to={`/contracts/${contract.id}`}>Detalles</Link>
+      </td>
     </tr>
   ));
 
@@ -100,13 +102,11 @@ function ContractSearch(props) {
               <th>Opciones</th>
             </tr>
           </thead>
-          <tbody>
-            {contracts.length > 0 ? allContracts : noContract}
-          </tbody>
+          <tbody>{contracts.length > 0 ? allContracts : noContract}</tbody>
         </table>
       </div>
     </>
-  )
+  );
 }
 
 export default ContractSearch;

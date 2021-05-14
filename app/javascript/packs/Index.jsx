@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import axios from "axios";
 
 import App from "../components/App";
-import store from '../store';
+import store from "../store";
 import reducers from "../reducers";
 
 // import Popper from 'popper.js';

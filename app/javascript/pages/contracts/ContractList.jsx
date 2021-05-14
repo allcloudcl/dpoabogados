@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { fetchContracts } from "../../actions/contracts";
 
 function ContractList(props) {
-
   // This behaves like ComponentDidMount
   useEffect(() => {
     props.dispatch(fetchContracts());
@@ -37,10 +36,16 @@ function ContractList(props) {
         <h1 className="h2">Contratos</h1>
         <div className="btn-toolbar mb-2 mb-md-0">
           <div className="btn-group me-2">
-            <Link to="/contracts/search" className="btn btn-sm btn-outline-secondary">
+            <Link
+              to="/contracts/search"
+              className="btn btn-sm btn-outline-secondary"
+            >
               Buscar
             </Link>
-            <Link to="/contracts/new" className="btn btn-sm btn-outline-secondary">
+            <Link
+              to="/contracts/new"
+              className="btn btn-sm btn-outline-secondary"
+            >
               Nuevo
             </Link>
           </div>
@@ -63,13 +68,13 @@ function ContractList(props) {
         </table>
       </div>
     </>
-  )
+  );
 }
 
 ContractList.defaultProps = {
   isFetching: false,
   contracts: [],
-}
+};
 
 function mapStateToProps(state) {
   return {
