@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,6 @@ import { fetchSchedules } from "../../actions/schedules";
 import { fetchCalendars } from "../../actions/calendars";
 
 function AgendaList(props) {
-
   const calendarRef = useRef(null);
 
   const handleMovePrevNext = (val) => {
@@ -20,7 +19,7 @@ function AgendaList(props) {
     } else if (val === 1) {
       calendarInstance.next();
     }
-  }
+  };
 
   useEffect(() => {
     props.dispatch(fetchCalendars());
@@ -33,23 +32,36 @@ function AgendaList(props) {
         <h1 className="h2">Agenda</h1>
         <div className="btn-toolbar mb-2 mb-md-0">
           <div className="btn-group me-2">
-            <Link to="/schedules/new" className="btn btn-sm btn-outline-secondary" >
+            <Link
+              to="/schedules/new"
+              className="btn btn-sm btn-outline-secondary"
+            >
               Nuevo
             </Link>
           </div>
           <div className="btn-group me-2">
-            <button className="btn btn-sm btn-outline-secondary" onClick={() => { handleMovePrevNext(-1) }}>
+            <button
+              className="btn btn-sm btn-outline-secondary"
+              onClick={() => {
+                handleMovePrevNext(-1);
+              }}
+            >
               <FontAwesomeIcon icon={["fas", "arrow-left"]} />
             </button>
-            <button className="btn btn-sm btn-outline-secondary" onClick={() => { handleMovePrevNext(1) }}>
-              <FontAwesomeIcon icon={["fas", "arrow-right"]}/>
+            <button
+              className="btn btn-sm btn-outline-secondary"
+              onClick={() => {
+                handleMovePrevNext(1);
+              }}
+            >
+              <FontAwesomeIcon icon={["fas", "arrow-right"]} />
             </button>
           </div>
         </div>
       </div>
       <div className="agenda">
         <div className="agenda-left">
-          <CalendarList calendars={props.calendars} />
+          <CalendarList calendars={props.calendars} calendarRef={calendarRef} />
         </div>
         <div className="agenda-right">
           <Calendar
@@ -70,10 +82,10 @@ function AgendaList(props) {
                 return "<span class='tui-full-calendar-left-content'>Todo el día</span>";
               },
               popupEdit: () => {
-                return 'Editar';
+                return "Editar";
               },
               popupDelete: (schedule) => {
-                return 'Eliminar';
+                return "Eliminar";
               },
             }}
             month={{
@@ -90,39 +102,71 @@ function AgendaList(props) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 function CalendarList(props) {
   let calendars = props.calendars.map((calendar, index) => (
-    <div className="agenda-calendars-list-item" key={calendar.id}>
-      <label>
-        <input type="checkbox" className="tui-full-calendar-checkbox-round" value={ calendar.id } checked />
-        <span style={{borderColor: calendar.borderColor, backgroundColor: calendar.borderColor}}></span>
-        <span>{ calendar.name }</span>
-      </label>
-    </div>
+    <CalendarListItem
+      calendar={calendar}
+      key={calendar.id}
+      calendarRef={props.calendarRef}
+    />
   ));
 
-  let noCalendar = <li>Sin Calendario</li>;
+  const noCalendar = <li>Sin Calendario</li>;
 
   return (
     <div id="agenda-calendars-list">
-       {props.calendars.length > 0 ? calendars : noCalendar}
+      {props.calendars.length > 0 ? calendars : noCalendar}
     </div>
-  )
+  );
 }
 
 CalendarList.defaultProps = {
   calendars: [],
 };
 
+function CalendarListItem(props) {
+  const [checked, setChecked] = useState(true);
+
+  const handleOnChange = () => {
+    let calendarInstance = props.calendarRef.current.getInstance();
+    calendarInstance.toggleSchedules(props.calendar.id, checked);
+    console.log(props.calendar.id);
+    console.log(checked);
+
+    setChecked(!checked);
+  };
+
+  return (
+    <div className="agenda-calendars-list-item">
+      <label>
+        <input
+          type="checkbox"
+          className="tui-full-calendar-checkbox-round"
+          id={props.calendar.id}
+          name={props.calendar.id}
+          defaultChecked={checked}
+          onChange={handleOnChange}
+        />
+        <span
+          style={{
+            borderColor: props.calendar.borderColor,
+            backgroundColor: props.calendar.borderColor,
+          }}
+        ></span>
+        <span>{props.calendar.name}</span>
+      </label>
+    </div>
+  );
+}
 
 function mapStateToProps(state) {
   return {
     calendars: state.calendars.calendars,
     schedules: state.schedules.schedules,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(AgendaList);
