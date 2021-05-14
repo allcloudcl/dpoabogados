@@ -18,3 +18,38 @@
   bottom: 5px;
   top: 64px;
 }
+
+.agenda-left {
+  width: 200px;
+  top: 49px;
+  bottom: 0;
+  border-right: 1px solid #d5d5d5;
+  padding: 12px 10px;
+}
+
+.agenda-left > div {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: normal;
+}
+
+.agenda-calendars-list-item {
+  min-height: 14px;
+  line-height: 14px;
+  padding: 8px 0;
+}
+
+.agenda {
+    display: flex;
+    flex-direction: row;
+}
+
+.agenda-right {
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 1024px) {
+    .agenda {
+        flex-direction: column;
+    }
+}

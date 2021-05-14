@@ -190,10 +190,10 @@ class ScheduleNew extends React.Component {
               value={this.state.schedule.category}
               onChange={this.onChange}
             >
-              <option value="0">Tiempo</option>
-              <option value="1">Meta</option>
-              <option value="2">Tarea</option>
-              <option value="3">Todo el día</option>
+              <option value="time">Tiempo</option>
+              <option value="milestone">Meta</option>
+              <option value="task">Tarea</option>
+              <option value="allday">Todo el día</option>
             </select>
           </div>
 
