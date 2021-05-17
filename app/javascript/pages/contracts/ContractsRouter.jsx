@@ -6,17 +6,15 @@ import Contract from "./Contract";
 import ContractNew from "./ContractNew";
 import ContractSearch from "./ContractSearch";
 
-class ContractsRouter extends React.Component {
-  render() {
-    return (
-      <Switch>
-        <Route path="/contracts" exact component={ContractList} />
-        <Route path="/contracts/new" exact component={ContractNew} />
-        <Route path="/contracts/search" exact component={ContractSearch} />
-        <Route path="/contracts/:id" exact component={Contract} />
-      </Switch>
-    );
-  }
+function ContractsRouter(props) {
+  return (
+    <Switch>
+      <Route path="/contracts" exact component={ContractList} />
+      <Route path="/contracts/new" exact component={ContractNew} />
+      <Route path="/contracts/search" exact component={ContractSearch} />
+      <Route path="/contracts/:id" exact component={Contract} />
+    </Switch>
+  );
 }
 
 export default withRouter(ContractsRouter);

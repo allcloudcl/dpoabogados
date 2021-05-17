@@ -61,21 +61,15 @@ const PrivateRoute = ({ dispatch, component, ...rest }) => {
   }
 };
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route path="/login" exact component={Login} />
-          <PrivateRoute
-            path="/"
-            dispatch={this.props.dispatch}
-            component={Layout}
-          />
-        </Switch>
-      </Router>
-    );
-  }
+function App(props) {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/login" exact component={Login} />
+        <PrivateRoute path="/" dispatch={props.dispatch} component={Layout} />
+      </Switch>
+    </Router>
+  );
 }
 
 const mapStateToProps = (state) => ({

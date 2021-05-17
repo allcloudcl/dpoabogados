@@ -1,13 +1,8 @@
 import React from "react";
 
-class LogOut extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+function LogOut(props) {
   handleLogout = (event) => {
     event.preventDefault();
-    let that = this;
 
     fetch("/users/sign_out", {
       method: "DELETE",
@@ -19,17 +14,11 @@ class LogOut extends React.Component {
       .then(() => document.location.reload(true));
   };
 
-  render() {
-    return (
-      <a
-        className="nav-link"
-        onClick={this.handleLogout}
-        href="/users/sign_out"
-      >
-        Sign Out
-      </a>
-    );
-  }
+  return (
+    <a className="nav-link" onClick={handleLogout} href="/users/sign_out">
+      Sign Out
+    </a>
+  );
 }
 
 export default LogOut;

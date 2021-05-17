@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Support = (props) => {
   return (
@@ -51,104 +51,94 @@ const Support = (props) => {
   );
 };
 
-class Contact extends React.Component {
-  constructor(props) {
-    super(props);
+function Contact(props) {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    description: "",
+  });
 
-    this.state = {
-      form: {
-        name: "",
-        email: "",
-        phone: "",
-        description: "",
-      },
-    };
-  }
-
-  onChange = (event) => {
-    this.setState((prevState) => {
-      let form = Object.assign({}, prevState.form);
-      form[event.target.name] = event.target.value;
-      return { form };
+  const onChange = (event) => {
+    setForm((prevState) => {
+      return { ...prevState, [event.target.name]: event.target.value };
     });
   };
 
-  doSubmitForm = (e) => {
+  const doSubmitForm = (e) => {
     e.preventDefault();
   };
 
-  render() {
-    return (
-      <form onSubmit={this.doSubmitForm} className="row g-3">
-        <div className="col-md-4">
-          <label htmlFor="name" className="form-label">
-            Nombre
-          </label>
-          <input
-            type="string"
-            name="name"
-            className="form-control"
-            placeholder="Juan Pérez"
-            value={this.state.form.name}
-            onChange={this.onChange}
-            required
-          ></input>
-        </div>
+  return (
+    <form onSubmit={doSubmitForm} className="row g-3">
+      <div className="col-md-4">
+        <label htmlFor="name" className="form-label">
+          Nombre
+        </label>
+        <input
+          type="string"
+          name="name"
+          className="form-control"
+          placeholder="Juan Pérez"
+          value={form.name}
+          onChange={onChange}
+          required
+        ></input>
+      </div>
 
-        <div className="col-md-4">
-          <label htmlFor="email" className="form-label">
-            Correo
-          </label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            placeholder="ejemplo@allcloud.cl"
-            value={this.state.form.email}
-            onChange={this.onChange}
-            required
-          ></input>
-        </div>
+      <div className="col-md-4">
+        <label htmlFor="email" className="form-label">
+          Correo
+        </label>
+        <input
+          type="email"
+          name="email"
+          className="form-control"
+          placeholder="ejemplo@allcloud.cl"
+          value={form.email}
+          onChange={onChange}
+          required
+        ></input>
+      </div>
 
-        <div className="col-md-4">
-          <label htmlFor="phone" className="form-label">
-            Teléfono
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            className="form-control"
-            placeholder="+56123456789"
-            pattern="[+]{1}[0-9]{11,14}"
-            value={this.state.form.phone}
-            onChange={this.onChange}
-            required
-          ></input>
-        </div>
+      <div className="col-md-4">
+        <label htmlFor="phone" className="form-label">
+          Teléfono
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          className="form-control"
+          placeholder="+56123456789"
+          pattern="[+]{1}[0-9]{11,14}"
+          value={form.phone}
+          onChange={onChange}
+          required
+        ></input>
+      </div>
 
-        <div>
-          <label htmlFor="description" className="form-label">
-            Descripción
-          </label>
-          <textarea
-            name="description"
-            className="form-control"
-            rows="2"
-            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            value={this.state.form.description}
-            onChange={this.onChange}
-            required
-          ></textarea>
-        </div>
+      <div>
+        <label htmlFor="description" className="form-label">
+          Descripción
+        </label>
+        <textarea
+          name="description"
+          className="form-control"
+          rows="2"
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          value={form.description}
+          onChange={onChange}
+          required
+        ></textarea>
+      </div>
 
-        <div className="col-12 mb-3">
-          <button type="submit" className="btn btn-primary me-2">
-            Enviar
-          </button>
-        </div>
-      </form>
-    );
-  }
+      <div className="col-12 mb-3">
+        <button type="submit" className="btn btn-primary me-2">
+          Enviar
+        </button>
+      </div>
+    </form>
+  );
 }
 
 export default Support;
