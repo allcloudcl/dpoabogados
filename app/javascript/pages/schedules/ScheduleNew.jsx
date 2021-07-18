@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { createSchedule } from "../../actions/schedules";
 import { fetchUsers } from "../../actions/users";
 
+import LocationSelect from "../../components/LocationSelect";
+
 // var dayjs = require('dayjs') // new call
 import dayjs from "dayjs";
 var customParseFormat = require("dayjs/plugin/customParseFormat");
@@ -28,7 +30,7 @@ class ScheduleNew extends React.Component {
         title: "",
         body: "",
         start: now,
-        end: now,
+        end: later,
         category: 0,
         location: "",
       },
@@ -36,8 +38,6 @@ class ScheduleNew extends React.Component {
       start_time: now.format("HH[:]mm"),
       end_date: later.format("YYYY[-]MM[-]DD"),
       end_time: later.format("HH[:]mm"),
-
-      users: [],
     };
   }
 
@@ -50,6 +50,15 @@ class ScheduleNew extends React.Component {
       schedule: {
         ...this.state.schedule,
         [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  updateLocation = (location) => {
+    this.setState({
+      schedule: {
+        ...this.state.schedule,
+        location: location
       },
     });
   };
@@ -201,15 +210,7 @@ class ScheduleNew extends React.Component {
             <label htmlFor="location" className="form-label">
               Ubicación
             </label>
-            <input
-              type="string"
-              name="location"
-              className="form-control"
-              placeholder="Concepción, Chile"
-              value={this.state.schedule.location}
-              onChange={this.onChange}
-              required
-            ></input>
+            <LocationSelect updateLocation={this.updateLocation} />
           </div>
 
           <div className="col-12 mb-3">
