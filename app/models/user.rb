@@ -16,14 +16,9 @@ class User < ApplicationRecord
   validates :dni, format: {with: /\A\d{2}\.\d{3}\.\d{3}-(\d|k)\z/i, message: "Wrong DNI format. It must look like XX.XXX.XXX-Y"}
 
   ## Associations
-  belongs_to :role
   has_many :contracts
   has_many :entries, foreign_key: 'author_id'
   has_one :calendar
-
-  def admin?
-    /admin/i.match?(role.name)
-  end
 
   def full_name
     "#{first_name} #{last_name}"

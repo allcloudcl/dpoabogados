@@ -4,7 +4,6 @@
 
 ```
 * Users:
-    * Belongs to: Role
     * Has many: Contracts
 * Contracts:
     * Has many: Entries
@@ -12,17 +11,9 @@
 * Entries:
     * Belongs to: Contract
     * Belongs to: Author (User)
-* Roles:
-    * Has many: Users
 ```
 
 ## Roles
-
-There are two roles for now:
-* Normal: A client.
-* Admin/Lawyer: Works for the company and manages Clients' contracts.
-
-There are plans for a super_admin role. For rails_admin or something.
 
 ## Contracts
 

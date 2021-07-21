@@ -19,7 +19,6 @@ function UserList(props) {
         <code>{user.username}</code>
       </td>
       <td>{user.email}</td>
-      <td>{user.role}</td>
     </tr>
   ));
 

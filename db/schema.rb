@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_231928) do
+ActiveRecord::Schema.define(version: 2021_07_21_155109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,12 +80,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_231928) do
     t.index ["contract_id"], name: "index_entries_on_contract_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "schedules", force: :cascade do |t|
     t.bigint "calendar_id", null: false
     t.string "title", null: false
@@ -116,7 +110,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_231928) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "role_id", default: 1, null: false
     t.string "username"
     t.string "dni", null: false
     t.string "address"
@@ -125,7 +118,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_231928) do
     t.index ["dni"], name: "index_users_on_dni", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
@@ -136,5 +128,4 @@ ActiveRecord::Schema.define(version: 2021_05_08_231928) do
   add_foreign_key "entries", "contracts"
   add_foreign_key "entries", "users", column: "author_id"
   add_foreign_key "schedules", "calendars"
-  add_foreign_key "users", "roles"
 end

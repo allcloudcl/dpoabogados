@@ -8,8 +8,6 @@
 
 # ROLES
 # -----
-normal_role = Role.create!({name: 'normal'})
-admin_role = Role.create!({name: 'admin'})
 
 
 # USERS
@@ -20,7 +18,6 @@ user = User.create!({
   email: "user@mail.com",
   username: 'normal',
   dni: "12.345.678-9",
-  role: normal_role,
   password: "123456",
   password_confirmation: "123456"
 })
@@ -30,7 +27,6 @@ admin = User.create!({
   email: "admin@mail.com",
   username: 'admin',
   dni: "01.234.567-K",
-  role: admin_role,
   password: "123456",
   password_confirmation: "123456"
 })
