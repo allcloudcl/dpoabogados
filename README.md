@@ -123,3 +123,7 @@ In `app/controllers/api/v1/posts_controller.rb`:
 -      render :show, status: :created, location: @post
 +      render :show, status: :created, location: api_v1_post_url(@post, format: :json)
 ```
+
+# Deploying to Heroku
+
+https://devcenter.heroku.com/articles/getting-started-with-rails6
