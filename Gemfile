@@ -32,6 +32,9 @@ gem "devise", "~> 4.7"
 # Authorization
 gem "cancancan", "~> 3.2"
 
+# Add roles
+gem "rolify", "~> 6.0"
+
 # Let's use tokens
 gem "simple_token_authentication", "~> 1.17"
 
