@@ -21,6 +21,7 @@ class Users::SessionsController < Devise::SessionsController
         full_name: resource.full_name,
         phone: resource.phone,
         email: resource.email,
+        role: resource.roles.first.name,
         username: resource.username,
         dni: resource.dni,
         address: resource.address,

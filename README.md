@@ -15,6 +15,14 @@
 
 ## Roles
 
+There are three kinds of roles:
+
+* admin: can access all resources.
+* editor: can access all resources, except Roles.
+* client: can access their own resources (i.e. only Contracts).
+
+TODO: Add a fourth Role, super_admin?
+
 ## Contracts
 
 A user has many contracts, and a Contract belongs to a user.

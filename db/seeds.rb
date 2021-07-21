@@ -1,5 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# This file should contain all the record creation needed to seed the database
+# with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created
+# alongside the database with db:setup).
 #
 # Examples:
 #
@@ -8,19 +10,34 @@
 
 # ROLES
 # -----
-
+# We're gonna create Roles on db:seed only (i.e. this file). On runtime, an
+# admin will be able to assign one of these roles, but not create new ones.
+['admin', 'editor', 'client'].each do |role_name|
+  Role.create! name: role_name
+end
 
 # USERS
 # -----
-user = User.create!({
-  first_name: "Regular",
+client = User.create!({
+  first_name: "Client",
   last_name: "User",
-  email: "user@mail.com",
-  username: 'normal',
+  email: "client@mail.com",
+  username: 'client',
   dni: "12.345.678-9",
   password: "123456",
   password_confirmation: "123456"
 })
+client.add_role :client
+editor = User.create!({
+  first_name: "Editor",
+  last_name: "User",
+  email: "editor@mail.com",
+  username: 'editor',
+  dni: "98.765.432-1",
+  password: "123456",
+  password_confirmation: "123456"
+})
+editor.add_role :editor
 admin = User.create!({
   first_name: "Admin",
   last_name: "AllCloud",
@@ -30,6 +47,7 @@ admin = User.create!({
   password: "123456",
   password_confirmation: "123456"
 })
+admin.add_role :admin
 
 
 # CONTRACTS

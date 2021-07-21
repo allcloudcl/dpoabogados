@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+  rolify :before_add => :remove_previous_roles
   acts_as_token_authenticatable
+
+  after_create :assign_default_role
 
   before_create :build_default_calendar
 
@@ -40,6 +43,16 @@ class User < ApplicationRecord
       conditions[:email].downcase! if conditions[:email]
       where(conditions.to_h).first
     end
+  end
+
+
+  # We want to have only one role at a time
+  def remove_previous_roles(role_name)
+    self.roles.delete_all
+  end
+
+  def assign_default_role
+    self.add_role(:client) if self.roles.blank?
   end
 
   private
