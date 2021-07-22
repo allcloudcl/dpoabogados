@@ -4,7 +4,7 @@ class Api::V1::SchedulesController < Api::V1::BaseController
   # GET /schedules
   # GET /schedules.json
   def index
-    @schedules = Schedule.all
+    @schedules = Schedule.includes(:attendees).all
   end
 
   # GET /schedules/1

@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :contracts
   has_many :entries, foreign_key: 'author_id'
   has_one :calendar
+  has_and_belongs_to_many :schedules, foreign_key: :attendee_id, join_table: "attendees_schedules"
+  # has_and_belongs_to_many :schedules, foreign_key: :attendee_id, association_foreign_key: :schedule_id, join_table: "attendees_schedules"
+
 
   def full_name
     "#{first_name} #{last_name}"
