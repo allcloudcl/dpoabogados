@@ -18,6 +18,7 @@ class Api::V1::SchedulesController < Api::V1::BaseController
     @schedule = Schedule.new(schedule_params)
 
     if @schedule.save
+      ScheduleMailer.send_ics(@schedule).deliver_later
       render :show, status: :created, location: api_v1_schedule_url(@schedule, format: :json)
     else
       render json: @schedule.errors, status: :unprocessable_entity
