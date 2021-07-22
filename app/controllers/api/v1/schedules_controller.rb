@@ -48,6 +48,6 @@ class Api::V1::SchedulesController < Api::V1::BaseController
 
     # Only allow a list of trusted parameters through.
     def schedule_params
-      params.fetch(:schedule, {}).permit(:calendar_id, :title, :body, :start, :end, :category, :location)
+      params.fetch(:schedule, {}).permit(:calendar_id, :title, :body, :start, :end, :category, :location, :attendee_ids => [])
     end
 end

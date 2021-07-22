@@ -62,6 +62,7 @@ function fetchUsersError(message) {
   };
 }
 
+// TODO: Revise this. We don't use graphql
 export function createUser(userData) {
   const config = {
     method: "POST",

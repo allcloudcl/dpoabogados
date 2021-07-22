@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+import Select from "react-select";
+
 import { createSchedule } from "../../actions/schedules";
 import { fetchUsers } from "../../actions/users";
 
@@ -33,16 +36,25 @@ class ScheduleNew extends React.Component {
         end: later,
         category: 0,
         location: "",
+        attendee_ids: [],
       },
       start_date: now.format("YYYY[-]MM[-]DD"),
       start_time: now.format("HH[:]mm"),
       end_date: later.format("YYYY[-]MM[-]DD"),
       end_time: later.format("HH[:]mm"),
+      assignable_users: [],
     };
   }
 
   componentDidMount() {
     this.props.dispatch(fetchUsers());
+    axios
+      .get("/api/v1/users", { params: { roles: ['admin', 'editor'] } })
+      .then((response) => this.setState({ assignable_users: response.data }))
+      .catch((error) => {
+        console.log(error);
+        props.history.push("/");
+      });
   }
 
   onChange = (event) => {
@@ -53,6 +65,16 @@ class ScheduleNew extends React.Component {
       },
     });
   };
+
+  setAttendees = (attendees) => {
+    let attendee_ids = attendees.map(({id}) => (id));
+    this.setState({
+      schedule: {
+        ...this.state.schedule,
+        attendee_ids: attendee_ids,
+      },
+    });
+  }
 
   updateLocation = (location) => {
     this.setState({
@@ -107,7 +129,7 @@ class ScheduleNew extends React.Component {
           <h1 className="h2">Nuevo Evento</h1>
         </div>
         <form onSubmit={this.doCreateSchedule} className="row g-3 mt-3">
-          <div>
+          <div className="col-md-6">
             <label htmlFor="title" className="form-label">
               Título
             </label>
@@ -120,6 +142,23 @@ class ScheduleNew extends React.Component {
               onChange={this.onChange}
               required
             ></input>
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="title" className="form-label">
+              Asignados
+            </label>
+            <Select className="col px-2" //form-select
+              placeholder="Usuarios"
+              name="attendees"
+              isMulti={true}
+              getOptionLabel={(o) => o.full_name}
+              getOptionValue={(o) => o.id}
+              options={this.state.assignable_users}
+              value={this.state.schedule.attendees}
+              // options={this.state.assignable_users.map(({id, full_name}) => ({value: id, label: full_name}))}
+              onChange={this.setAttendees}
+            />
           </div>
 
           <div>

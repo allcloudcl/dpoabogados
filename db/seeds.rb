@@ -56,7 +56,7 @@ Contract.create!([
   {
     description: "Contrato Deuda para Usuario. Lorem ipsum etc etc",
     kind: 0,
-    user_id: user.id,
+    user_id: client.id,
     creditor: "AllCloud",
     amount: "130000.00",
     dues: "12",
@@ -80,7 +80,7 @@ Contract.create!([
   {
     description: "Contrato Jurídico para Usuario. Lorem ipsum etc etc",
     kind: 1,
-    user_id: user.id,
+    user_id: client.id,
     creditor: "AllCloud",
     amount: "130000.00",
     dues: "12",

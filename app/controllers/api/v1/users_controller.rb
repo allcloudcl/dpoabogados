@@ -4,7 +4,11 @@ class Api::V1::UsersController < Api::V1::BaseController
   # GET /users
   # GET /users.json
   def index
-    @users = User.includes(:contracts, :roles).all
+    if roles_params
+      @users = User.with_any_role(*roles_params)
+    else
+      @users = User.includes(:contracts, :roles).all
+    end
   end
 
   # GET /users/1
@@ -49,5 +53,9 @@ class Api::V1::UsersController < Api::V1::BaseController
     # Only allow a list of trusted parameters through.
     def user_params
       params.fetch(:user, {})
+    end
+
+    def roles_params
+      params.fetch(:roles, nil)
     end
 end
