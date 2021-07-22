@@ -4,7 +4,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.includes(:contracts, :roles).all
   end
 
   # GET /users/1
