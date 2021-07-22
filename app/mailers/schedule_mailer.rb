@@ -1,5 +1,5 @@
 class ScheduleMailer < ApplicationMailer
-  default from: "notifications@dpo.allcloud.cl"
+  default from: "notifications@allcloud-dpo.herokuapp.com"
 
   def send_ics(schedule)
     # Bless you, Mauro

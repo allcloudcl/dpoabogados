@@ -31,7 +31,7 @@ client.add_role :client
 editor = User.create!({
   first_name: "Editor",
   last_name: "User",
-  email: "editor@mail.com",
+  email: "roberto.delgado@allcloud.cl",
   username: 'editor',
   dni: "98.765.432-1",
   password: "123456",
@@ -41,7 +41,7 @@ editor.add_role :editor
 admin = User.create!({
   first_name: "Admin",
   last_name: "AllCloud",
-  email: "admin@mail.com",
+  email: "ivan14polanco@gmail.com",
   username: 'admin',
   dni: "01.234.567-K",
   password: "123456",
