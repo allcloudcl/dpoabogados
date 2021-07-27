@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Calendar from "@toast-ui/react-calendar";
 
 import { connect } from "react-redux";
-import { fetchSchedules } from "../../actions/schedules";
+import { fetchSchedules, deleteSchedule } from "../../actions/schedules";
 import { fetchCalendars } from "../../actions/calendars";
 
 function AgendaList(props) {
@@ -20,6 +20,16 @@ function AgendaList(props) {
       calendarInstance.next();
     }
   };
+
+  const handleBeforeDeleteSchedule = (event) => {
+    let calendarInstance = calendarRef.current.getInstance();
+    let schedule = event.schedule;
+    props.dispatch(deleteSchedule(schedule))
+      .then(() => {
+        calendarInstance.deleteSchedule(schedule.id, schedule.calendarId);
+      })
+      .catch((error) => console.log(error));
+  }
 
   useEffect(() => {
     props.dispatch(fetchCalendars());
@@ -101,6 +111,7 @@ function AgendaList(props) {
               hourStart: 7,
               hourEnd: 24,
             }}
+            onBeforeDeleteSchedule={handleBeforeDeleteSchedule}
           />
         </div>
       </div>

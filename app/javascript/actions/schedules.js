@@ -4,6 +4,9 @@ export const CREATE_SCHEDULE_INITIAL = "CREATE_SCHEDULE_INITIAL";
 export const CREATE_SCHEDULE_REQUEST = "CREATE_SCHEDULE_REQUEST";
 export const CREATE_SCHEDULE_SUCCESS = "CREATE_SCHEDULE_SUCCESS";
 export const CREATE_SCHEDULE_FAILURE = "CREATE_SCHEDULE_FAILURE";
+
+export const DELETE_SCHEDULE_REQUEST = "DELETE_SCHEDULE_REQUEST";
+
 export const FETCH_SCHEDULES_REQUEST = "FETCH_SCHEDULES_REQUEST";
 export const FETCH_SCHEDULES_SUCCESS = "FETCH_SCHEDULES_SUCCESS";
 export const FETCH_SCHEDULES_FAILURE = "FETCH_SCHEDULES_FAILURE";
@@ -95,6 +98,19 @@ export function fetchSchedules() {
       })
       .catch((err) => {
         dispatch(fetchSchedulesError(err));
+        return Promise.reject(err);
+      });
+  };
+}
+
+export function deleteSchedule(schedule) {
+  return (dispatch) => {
+    return axios
+      .delete(`/api/v1/schedules/${schedule.id}`)
+      .then((response) => {
+        return Promise.resolve(response.data);
+      })
+      .catch((err) => {
         return Promise.reject(err);
       });
   };

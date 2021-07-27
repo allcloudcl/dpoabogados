@@ -3,6 +3,7 @@ import {
   CREATE_SCHEDULE_REQUEST,
   CREATE_SCHEDULE_SUCCESS,
   CREATE_SCHEDULE_FAILURE,
+  DELETE_SCHEDULE_REQUEST,
   FETCH_SCHEDULES_REQUEST,
   FETCH_SCHEDULES_SUCCESS,
   FETCH_SCHEDULES_FAILURE,
@@ -48,6 +49,10 @@ export default function schedules(
       return Object.assign({}, state, {
         isFetching: false,
         message: "Something wrong happened. Please come back later",
+      });
+    case DELETE_SCHEDULE_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
       });
     default:
       return state;
