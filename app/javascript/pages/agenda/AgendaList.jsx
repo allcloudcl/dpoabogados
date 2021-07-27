@@ -81,6 +81,9 @@ function AgendaList(props) {
               alldayTitle: () => {
                 return "<span class='tui-full-calendar-left-content'>Todo el día</span>";
               },
+              popupDetailUser: (schedule) => {
+                return (schedule.attendees.map((a) => a.full_name) || []).join(', ');
+              },
               popupEdit: () => {
                 return "Editar";
               },
