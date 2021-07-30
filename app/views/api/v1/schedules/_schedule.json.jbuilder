@@ -5,8 +5,6 @@ json.color schedule.color
 json.bgColor schedule.bg_color
 json.dragBgColor schedule.drag_bg_color
 json.borderColor schedule.border_color
-json.attendees schedule.attendees do |attendee|
-  json.extract! attendee, :id, :dni, :first_name, :last_name, :full_name
-end
+json. attendee_ids schedule.attendees.map { |a| a.id }
 
 json.url api_v1_schedule_url(schedule, format: :json)

@@ -19,7 +19,6 @@ class ScheduleNew extends React.Component {
   static defaultProps = {
     isFetching: false,
     message: null,
-    users: [],
   };
 
   constructor(props) {
@@ -47,7 +46,6 @@ class ScheduleNew extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchUsers());
     axios
       .get("/api/v1/users", { params: { roles: ['admin', 'editor'] } })
       .then((response) => this.setState({ assignable_users: response.data }))
@@ -117,12 +115,6 @@ class ScheduleNew extends React.Component {
   };
 
   render() {
-    const optionsUsers = this.props.users.map((user, index) => (
-      <option value={user.id} key={index}>
-        {user.full_name}
-      </option>
-    ));
-
     return (
       <>
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
@@ -155,7 +147,7 @@ class ScheduleNew extends React.Component {
               getOptionLabel={(o) => o.full_name}
               getOptionValue={(o) => o.id}
               options={this.state.assignable_users}
-              value={this.state.schedule.attendees}
+              value={this.state.assignable_users.filter(u => this.state.schedule.attendee_ids.indexOf(u.id) != -1)}
               // options={this.state.assignable_users.map(({id, full_name}) => ({value: id, label: full_name}))}
               onChange={this.setAttendees}
             />
@@ -271,7 +263,6 @@ function mapStateToProps(state) {
   return {
     isFetching: state.contracts.isFetching,
     message: state.contracts.isFetching,
-    users: state.users.users,
   };
 }
 
