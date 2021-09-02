@@ -115,3 +115,18 @@ export function deleteSchedule(schedule) {
       });
   };
 }
+
+export function updateSchedule(scheduleData) {
+  return (dispatch) => {
+    return axios
+      .put(`/api/v1/schedules/${scheduleData.schedule.id}`, scheduleData)
+      .then((response) => {
+        setTimeout(() => {
+        }, 5000);
+        return Promise.resolve(response.data);
+      })
+      .catch((err) => {
+        return Promise.reject(err);
+      });
+  };
+}

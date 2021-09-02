@@ -21,6 +21,10 @@ function AgendaList(props) {
     }
   };
 
+  const handleBeforeUpdateSchedule = (event) => {
+    props.history.push(`/schedules/edit/${event.schedule.id}`);
+  }
+
   const handleBeforeDeleteSchedule = (event) => {
     let calendarInstance = calendarRef.current.getInstance();
     let schedule = event.schedule;
@@ -111,6 +115,7 @@ function AgendaList(props) {
               hourStart: 7,
               hourEnd: 24,
             }}
+            onBeforeUpdateSchedule={handleBeforeUpdateSchedule}
             onBeforeDeleteSchedule={handleBeforeDeleteSchedule}
           />
         </div>

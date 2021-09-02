@@ -56,6 +56,12 @@ function LocationSelect(props) {
     props.updateLocation(commune.code);
   }, [commune]);
 
+  useEffect(() => {
+    if (props.commune_code) {
+      setCommune(props.commune_code)
+    }
+  }, []);
+
   return (
     <div className="row">
       <div className="input-group">
