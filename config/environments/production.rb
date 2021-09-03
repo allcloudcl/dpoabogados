@@ -70,12 +70,12 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: '',
+    address: Rails.application.secrets[:production][:mail][:address],
     port: 587,
-    domain: '',
-    user_name: '',
-    password: '',
-    authentication: '',
+    domain: Rails.application.secrets[:production][:mail][:domain],
+    user_name: Rails.application.secrets[:production][:mail][:user_name],
+    password: Rails.application.secrets[:production][:mail][:password],
+    authentication: Rails.application.secrets[:production][:mail][:authentication],
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
